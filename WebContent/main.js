@@ -24,7 +24,7 @@
 	var playerVelocity = new THREE.Vector3();
 
 	// How fast the player will move
-	var PLAYERSPEED = 800.0;
+	var PLAYERSPEED = 12000.0;
 
 	var clock;
 
@@ -46,7 +46,7 @@
 
 		geometry[0] = new THREE.BoxGeometry(10,wallStandard,wallStandard);
   		geometry[1] = new THREE.BoxGeometry(wallStandard,wallStandard,10);
-  		
+  		geometry[2] = new THREE.BoxGeometry(wallStandard,10,wallStandard);
 
 		wall = new THREE.Mesh(geometry[isVertical],material);
 
@@ -58,9 +58,9 @@
 
 		var textureLoader = new THREE.TextureLoader();
 
-		var material =  new THREE.MeshPhongMaterial({color: 0xFF44AA,map:textureLoader.load("5822c731097ac.jpg")});
-  		var material1 =  new THREE.MeshLambertMaterial({color: 0x5599FF});
-  		var material2 =  new THREE.MeshLambertMaterial({color: 0xFFFF33});
+		var innerWall =  new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture('images/innerwall.jpg')});
+		var outWall =  new THREE.MeshPhongMaterial({color: 0x808080, map: THREE.ImageUtils.loadTexture('images/outwall.jpg')});
+  		var floor =  new THREE.MeshPhongMaterial({color: 0x8c8c8c, map: THREE.ImageUtils.loadTexture('images/stone-wall.jpg')});
 
 		var wall =[];
 		var wallnum = 0;
@@ -70,7 +70,7 @@
 		{
 			
 			//新牆壁
-			wall[wallnum] = new createWall(0,material);
+			wall[wallnum] = new createWall(0,outWall);
 			
 			//設定牆壁位置與方向
 			wall[wallnum].position.set(0,0,i*wallStandard);
@@ -85,7 +85,7 @@
 
 		for(i=0;i<mapSize;i++)
 		{
-			wall[wallnum] = new createWall(1,material);
+			wall[wallnum] = new createWall(1,outWall);
 			wall[wallnum].position.set(i*wallStandard+wallStandard/2,0,wallStandard/2-wallStandard);
 			scene.add(wall[wallnum]);
 			collidableObjects.push(wall[wallnum]);
@@ -93,7 +93,7 @@
 		}
 		for(i=0;i<mapSize;i++)
 		{
-			wall[wallnum] = new createWall(1,material);
+			wall[wallnum] = new createWall(1,outWall);
 			wall[wallnum].position.set(i*wallStandard+wallStandard/2,0,mapSize*wallStandard-wallStandard/2);
 			scene.add(wall[wallnum]);
 			collidableObjects.push(wall[wallnum]);
@@ -102,8 +102,18 @@
 
   		for(i=0;i<mapSize;i++)
   		{
-  			wall[wallnum] = new createWall(0,material);
+  			wall[wallnum] = new createWall(0,outWall);
 			wall[wallnum].position.set(mapSize*wallStandard,0,i*wallStandard);
+			scene.add(wall[wallnum]);
+			collidableObjects.push(wall[wallnum]);
+			wallnum++
+  		}
+
+  		for(i=0;i<mapSize;i++)
+  			for(j=0;j<mapSize;j++)
+  		{
+  			wall[wallnum] = new createWall(2,floor);
+			wall[wallnum].position.set(j*wallStandard+155,-150,i*wallStandard);
 			scene.add(wall[wallnum]);
 			collidableObjects.push(wall[wallnum]);
 			wallnum++
@@ -116,7 +126,7 @@
 				{
 					if(Math.random() > 0.8)
 					{
-						wall[wallnum] = new createWall(0,material);
+						wall[wallnum] = new createWall(0,innerWall);
 						wall[wallnum].position.set(j*wallStandard-wallStandard/2,0,i*wallStandard-wallStandard);
 						scene.add(wall[wallnum]);
 						collidableObjects.push(wall[wallnum]);
@@ -129,13 +139,37 @@
 				{
 					if(Math.random() > 0.8)
 					{
-						wall[wallnum] = new createWall(1,material);
+						wall[wallnum] = new createWall(1,innerWall);
 						wall[wallnum].position.set(j*wallStandard-wallStandard/2,0,i*wallStandard-wallStandard);
 						scene.add(wall[wallnum]);
 						collidableObjects.push(wall[wallnum]);
 						wallnum++;
 					}
 				}
+	}
+
+	function loadObjMtl(num)
+	{
+		var mtlLoader = new THREE.MTLLoader();
+        mtlLoader.load("models/naturePack_"+num+".mtl", function(materials) {
+            materials.preload();
+            var objLoader = new THREE.OBJLoader();
+            objLoader.setMaterials(materials);
+            objLoader.load("models/naturePack_"+num+".obj", function(mesh) {
+
+                mesh.traverse(function(node) {
+                    if (node instanceof THREE.Mesh) {
+                        node.castShadow = true;
+                        node.receiveShadow = true;
+                    }
+                });
+                mesh.scale.set(50,50,50);
+                mesh.position.set(Math.random()*1800 + 100, -50, Math.random()*1800 + 100);
+                scene.add(mesh);
+                collidableObjects.push(mesh);
+                mesh.rotation.y = -Math.PI / 4;
+            });
+        });
 	}
 
 
@@ -161,18 +195,28 @@
 
  		 // Create a camera, zoom it out from the model a bit, and add it to the scene.
   		camera = new THREE.PerspectiveCamera(50, WIDTH / HEIGHT, 0.1, 20000);
-  		camera.position.set(150, player.height, 150);
-		camera.lookAt(new THREE.Vector3(100,player.height,100));
+  		camera.position.set(0, player.height, 0);
+		camera.lookAt(new THREE.Vector3(0,player.height,0));
   		scene.add(camera);
   		p = new People(scene);
   		
   		
   		// Create a light, set its position, and add it to the scene.
+  		var light0 = new THREE.PointLight(0xffffff);
+  		light0.position.set(0,6000,0);
+  		scene.add(light0);	
 
-  		
+  		var light1 = new THREE.PointLight(0xffffff);
+  		light1.position.set(6000,6000,0);
+  		scene.add(light1);
+
+		var light2 = new THREE.PointLight(0xffffff);
+  		light2.position.set(0,6000,6000);
+  		scene.add(light2);
+
 		var light3 = new THREE.PointLight(0xffffff);
-  		light3.position.set(100,2000,100);
-  		scene.add(light3);	
+  		light3.position.set(6000,6000,6000);
+  		scene.add(light3);
 
   		
 
