@@ -24,11 +24,22 @@
 	 	clock = new THREE.Clock();
 		
 
- 	 // Create the scene and set the scene size.
+	 	// Create the scene and set the scene size.
  	 	scene = new THREE.Scene();
   		var WIDTH = 1000,
      	HEIGHT = 800;
-     	scene.background = new THREE.Color( 0xffffbb );
+
+  		//set background
+  		var path = "images/";
+		var format = '.jpg';
+		var urls = [
+				path + 'px' + format, path + 'nx' + format,
+				path + 'py' + format, path + 'ny' + format,
+				path + 'pz' + format, path + 'nz' + format
+			];
+		var reflectionCube = new THREE.CubeTextureLoader().load( urls );
+		reflectionCube.format = THREE.RGBFormat;
+		scene.background = reflectionCube;
 
   		// Create a renderer and add it to the DOM.
   		renderer = new THREE.WebGLRenderer({antialias:true});
@@ -45,21 +56,21 @@
   		
   		
   		// Create a light, set its position, and add it to the scene.
-  		var light0 = new THREE.PointLight(0xffffff);
-  		light0.position.set(0,6000,0);
-  		scene.add(light0);	
+  		hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+		hemiLight.color.setHSL( 0.6, 1, 0.6 );
+		hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+		hemiLight.position.set( 0, 1000, 0 );
+		scene.add( hemiLight );
 
-  		var light1 = new THREE.PointLight(0xffffff);
-  		light1.position.set(6000,6000,0);
-  		scene.add(light1);
-
-		var light2 = new THREE.PointLight(0xffffff);
-  		light2.position.set(0,6000,6000);
-  		scene.add(light2);
-
-		var light3 = new THREE.PointLight(0xffffff);
-  		light3.position.set(6000,6000,6000);
-  		scene.add(light3);
+		dirLight = new THREE.DirectionalLight( 0xffffff, 0.6 );
+		dirLight.color.setHSL( 0.1, 1, 0.95 );
+		dirLight.position.set( 0, 1000, 0 );
+		dirLight.position.multiplyScalar( 50 );
+		scene.add( dirLight );
+		
+		dirLight.castShadow = true;
+		dirLight.shadow.mapSize.width = 6000;
+		dirLight.shadow.mapSize.height = 6000;
 
   		
   		

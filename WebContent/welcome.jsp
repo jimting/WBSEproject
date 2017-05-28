@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=BIG5">
 <title>Welcome!</title>
 </head>
-<script src = "AutoRefreshRoom.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src = "AutoRefreshRoom.js"></script>
 <script>
 	ajaxFn();
 </script>

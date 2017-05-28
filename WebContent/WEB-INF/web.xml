@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <display-name>mazeTest</display-name>
+  <display-name>WBSEproject</display-name>
   <servlet>
     <servlet-name>CountPlayerServlet</servlet-name>
     <servlet-class>maze.controller.servlet.CountPlayerServlet</servlet-class>
@@ -33,7 +33,7 @@
     <servlet-name>AutoRefreshRoomServlet</servlet-name>
     <url-pattern>/AutoRefreshRoom</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>ConstructRoomServlet</servlet-name>
     <servlet-class>maze.controller.servlet.ConstructRoomServlet</servlet-class>
   </servlet>
@@ -41,7 +41,7 @@
     <servlet-name>ConstructRoomServlet</servlet-name>
     <url-pattern>/ConstructRoom</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>MainGameServlet</servlet-name>
     <servlet-class>maze.controller.servlet.MainGameServlet</servlet-class>
   </servlet>
@@ -52,12 +52,12 @@
   <listener>
     <listener-class>
 			maze.controller.listener.PlayerSessionListener
-		</listener-class>
+	</listener-class>
   </listener>
   <listener>
     <listener-class>
 			maze.controller.listener.WelcomeContextListener
-		</listener-class>
+	</listener-class>
   </listener>
   <welcome-file-list>
     <welcome-file>welcome</welcome-file>
