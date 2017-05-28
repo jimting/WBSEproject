@@ -1,4 +1,10 @@
-﻿<html>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page import="maze.game.Game"%>
+<%@ page import="maze.animal.*"%>
+
+<html>
 	<head>
 		<meta context = "text/html; charest=utf-8">
 		<title> 
@@ -11,10 +17,11 @@
 		<script src="js/libs/stats.min.js"></script>
 		<script src="js/controls/OrbitControls.js"></script>
 		<script src="js/libs/dat.gui.min.js"></script>
-		<script src="PointerLockControl.js"></script>
+		<script src="maze/PointerLockControl.js"></script>
 		<script src="maze/Map.js"></script>
 		<script src="maze/People.js"></script>
 		<script src="maze/FirstPeople.js"></script>
+		
 		
 		
 		<link rel="stylesheet" href="stylesheet.css">
@@ -29,8 +36,13 @@
 
 		</div>
 		<div id='gameBox'>
-			<script src="maze/main.js"></script>	
+			<script src="maze/main.js"></script>
+			<script>
+				firstPeople.translateX('${game.playerList[playerNum-1].position.x}');
+				firstPeople.translateZ('${game.playerList[playerNum-1].position.z}');
+			</script>	
 		</div>
+		
 		
 	
 	</body>

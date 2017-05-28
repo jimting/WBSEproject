@@ -28,10 +28,11 @@ FirstPeople= function(scene , collidableObjects ){
 	
 	
 	camera = new THREE.PerspectiveCamera(50, WIDTH / HEIGHT, 0.1, 20000);
-	camera.position.set(0, 60, 0);
-	camera.lookAt(new THREE.Vector3(0,60,0));
-	scene.add(camera);
+	camera.position.set(0,0,0);
+	camera.lookAt(0,0,0);
+	
 	controls = new THREE.PointerLockControls(camera);
+	
 	getPointerLock();
 	listenForPlayerMovement();
 	scene.add(controls.getObject());
@@ -220,6 +221,23 @@ FirstPeople= function(scene , collidableObjects ){
 	{
 		return camera;
 	}
+	
+	this.getControls  = function ()
+	{
+		return controls;
+	}
+	
+	this.translateX = function(x)
+	{
+		controls.getObject().translateX(x);
+	}
+	
+	this.translateZ = function(x)
+	{
+		controls.getObject().translateZ(x);
+	}
+	
+	
 	
 	
 }

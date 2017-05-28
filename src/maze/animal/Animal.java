@@ -2,27 +2,25 @@ package maze.animal;
 
 public abstract class Animal 
 {
-	private Direction face;
+	private Direction position;
 	private int speed;
-	
-	public void setFace(Direction face)
-	{
-		this.face = face;
-	}
 	
 	public void setSpeed(int speed)
 	{
 		this.speed = speed;
 	}
 	
-	public Direction getFace()
-	{
-		return face;
-	}
-	
 	public int getSpeed()
 	{
 		return speed;
+	}
+
+	public Direction getPosition() {
+		return position;
+	}
+
+	public void setPosition(Direction position) {
+		this.position = position;
 	}
 	
 }

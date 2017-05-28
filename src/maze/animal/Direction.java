@@ -10,9 +10,12 @@ public class Direction
 	
 	public Direction()
 	{
-		x = 0;
-		y = 0;
-		z = 0;
+		setDirection(0,0,0);
+	}
+	
+	public Direction(int x ,int y,int z)
+	{
+		setDirection(x,y,z);
 	}
 	
 	public void setDirection(int x,int y,int z)
@@ -20,6 +23,18 @@ public class Direction
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
+	
+	public int getZ(){
+		return z;
 	}
 	
 }

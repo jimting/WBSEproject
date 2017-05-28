@@ -6,10 +6,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=BIG5">
 <title>Welcome!</title>
 </head>
-<script src = "welcome.js"></script>
+<script src = "AutoRefreshRoom.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<body>
-	<button onclick = "getPlayerNum()">click!</button>
-	<div id = "show"></div>
+<script>
+	ajaxFn();
+</script>
+<body style = "background-color:yellow">
+	<center><img src = "images/title.jpg">
+	<div style = "overflow: scroll;width: 480px;height: 640px;border-style:double" id = "gameList">
+	</div>
+	<div>
+		<form action = "ConstructRoom"><button style = "margin-left:10px " type="submit"><img src = "images/enter.jpg"></button></form>
+		<form action = "Leave"><button  type="submit"><img src = "images/leave.jpg"></button></form>
+	</div>
+	</center>
+	
 </body>
 </html>

@@ -17,6 +17,38 @@
     <servlet-name>WelcomeServlet</servlet-name>
     <url-pattern>/welcome</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>LeaveServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.LeaveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LeaveServlet</servlet-name>
+    <url-pattern>/Leave</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AutoRefreshRoomServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.AutoRefreshRoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutoRefreshRoomServlet</servlet-name>
+    <url-pattern>/AutoRefreshRoom</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>ConstructRoomServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.ConstructRoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConstructRoomServlet</servlet-name>
+    <url-pattern>/ConstructRoom</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>MainGameServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.MainGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainGameServlet</servlet-name>
+    <url-pattern>/MainGame</url-pattern>
+  </servlet-mapping>
   <listener>
     <listener-class>
 			maze.controller.listener.PlayerSessionListener

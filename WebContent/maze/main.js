@@ -40,7 +40,7 @@
  		 // Create a camera, zoom it out from the model a bit, and add it to the scene.
   		
   		map = new Map(scene);
-  		p = new People(scene);
+  		
   		firstPeople = new FirstPeople(scene,map.getCollidableObjects());
   		
   		
