@@ -10,6 +10,7 @@ FirstPeople= function(scene , collidableObjects ){
 	var camera;
 	var controls;
 	var controlsEnabled = false;
+	var PLAYERCOLLISIONDISTANCE = 20;
 
 	// HTML elements to be changed
 	var blocker = document.getElementById('blocker');
@@ -24,7 +25,7 @@ FirstPeople= function(scene , collidableObjects ){
 	var playerVelocity = new THREE.Vector3();
 
 	// How fast the player will move
-	var PLAYERSPEED = 12000.0;
+	var PLAYERSPEED = 500;
 	
 	
 	camera = new THREE.PerspectiveCamera(50, WIDTH / HEIGHT, 0.1, 20000);
@@ -120,36 +121,34 @@ FirstPeople= function(scene , collidableObjects ){
 		}
 	this.animatePlayer = function (delta) 
 		{
-			// Gradual slowdown
-			playerVelocity.x -= playerVelocity.x * 10.0 * delta;
-			playerVelocity.z -= playerVelocity.z * 10.0 * delta;
 			
-			if (detectPlayerCollision() == false)
+			
+		
+		if (detectPlayerCollision() == false)
+		{
+			if (moveForward) 
 			{
-				if (moveForward) 
-				{
-					playerVelocity.z -= PLAYERSPEED * delta;
-				} 
-				if (moveBackward) 
-				{
-					playerVelocity.z += PLAYERSPEED * delta;
-				} 
-				if (moveLeft) 
-				{
-					playerVelocity.x -= PLAYERSPEED * delta;
-				} 
-				if (moveRight) 
-				{
-					playerVelocity.x += PLAYERSPEED * delta;
-				}
-				if( !( moveForward || moveBackward || moveLeft ||moveRight)) 
-				{
-					// No movement key being pressed. Stop movememnt
-					playerVelocity.x = 0;
-					playerVelocity.z = 0;
-				}
-				controls.getObject().translateX(playerVelocity.x * delta);
-				controls.getObject().translateZ(playerVelocity.z * delta);
+				playerVelocity.z = -PLAYERSPEED;
+			} 
+			if (moveBackward) 
+			{
+				playerVelocity.z = PLAYERSPEED;
+			} 
+			if (moveLeft) 
+			{
+				playerVelocity.x = -PLAYERSPEED;
+			} 
+			if (moveRight) 
+			{
+				playerVelocity.x = PLAYERSPEED;
+			}
+			if(!( moveForward || moveBackward))
+				playerVelocity.z = 0;
+			if(!( moveLeft ||moveRight)) 
+				playerVelocity.x = 0;
+			controls.getObject().translateX(playerVelocity.x * delta);
+			controls.getObject().translateZ(playerVelocity.z * delta);
+				 
 			}
 		}
 
@@ -235,6 +234,16 @@ FirstPeople= function(scene , collidableObjects ){
 	this.translateZ = function(x)
 	{
 		controls.getObject().translateZ(x);
+	}
+	
+	this.getDirectionX = function()
+	{
+		return controls.getObject().position.x;
+	}
+	
+	this.getDirectionZ = function()
+	{
+		return controls.getObject().position.z;
 	}
 	
 	

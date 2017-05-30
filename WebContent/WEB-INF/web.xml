@@ -49,6 +49,14 @@
     <servlet-name>MainGameServlet</servlet-name>
     <url-pattern>/MainGame</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>StoreAndGetMoveServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.StoreAndGetMoveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StoreAndGetMoveServlet</servlet-name>
+    <url-pattern>/StoreAndGet</url-pattern>
+  </servlet-mapping>
   <listener>
     <listener-class>
 			maze.controller.listener.PlayerSessionListener

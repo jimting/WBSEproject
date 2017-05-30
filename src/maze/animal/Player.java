@@ -1,5 +1,7 @@
 package maze.animal;
 
+import maze.game.Game;
+
 public class Player extends Animal
 {
 	
@@ -26,15 +28,19 @@ public class Player extends Animal
 		{
 			case 0:
 				setSpeed(12000);
-				setPosition(new Direction(2500,0,2500));
+				setPosition(new Direction(Game.p1Position,0,Game.p1Position));
 				break;
 			case 1:
 				setSpeed(12000);
-				setPosition(new Direction(1500,0,1500));
+				setPosition(new Direction(Game.p2Position,0,Game.p2Position));
+				break;
+			case 2:
+				setSpeed(12000);
+				setPosition(new Direction(Game.p3Position,0,Game.p3Position));
 				break;
 			default :
 				setSpeed(12000);
-				setPosition(new Direction(500,0,500));
+				setPosition(new Direction(Game.p4Position,0,Game.p4Position));
 				break;
 		}
 		

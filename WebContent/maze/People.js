@@ -1,4 +1,4 @@
-People = function(scene){
+People = function(scene ,callback,i){
 	
 	var idleAction;
 	var walkAction;
@@ -6,12 +6,13 @@ People = function(scene){
 	var idleWeight;
 	var walkWeight;
 	var runWeight;
-	var mixer = null;
-	var people = null;
+	var mixer;
+	var people;
 	var clock = new THREE.Clock();
 	var url = 'marine_anims_core.json';
 	
-// Initialize stats (fps display)
+	
+	// Initialize stats (fps display)
 
 	
 
@@ -21,44 +22,48 @@ People = function(scene){
 	
 		if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 		
-		new THREE.ObjectLoader().load( url, function ( loadedObject ) {
+		var loader = new THREE.ObjectLoader().load( url, function ( loadedObject ) {
 
 			loadedObject.traverse( function ( child ) {
 
 				if ( child instanceof THREE.SkinnedMesh ) {
 
-					people = child;
-
+					people = new THREE.SkinnedMesh(child.geometry,child.material);
 				}
 
 			} );
-
+			
 			if ( people === undefined ) {
 
 				alert( 'Unable to find a SkinnedMesh in this place:\n\n' + url + '\n\n' );
 				return;
 
 			}
+			
 
-		// Add mesh and skeleton helper to scene
-		
-		people.rotation.y =  -180 * Math.PI / 180;
-		people.position.set(200,-150,200);
-		scene.add( people );
-		
-		mixer = new THREE.AnimationMixer( people );
-		
-		
-		idleAction = mixer.clipAction( 'idle' );
-		walkAction = mixer.clipAction( 'walk' );
-		runAction = mixer.clipAction( 'run' );
-	
-		
-	
+			people.rotation.y =  -180 * Math.PI / 180;
+			people.position.set(200,-150,200);
+			 
+			scene.add( people );
+			
+			mixer = new THREE.AnimationMixer( people );
+			
+			
+			idleAction = mixer.clipAction( 'idle' );
+			walkAction = mixer.clipAction( 'walk' );
+			runAction = mixer.clipAction( 'run' );
+			
+			
+			callback(people,i);
+			
+			
+			
+			
 		});
-	 
-
 		
+		//this.people.position.set(200,0,200);
+		
+
 		this.run = function (){
 			var mixerUpdateDelta = clock.getDelta();
 
@@ -98,6 +103,12 @@ People = function(scene){
 
 		}
 		
+		
+		
+		this.setPosition = function(x,y,z)
+		{
+			people.position.set(x,y,z);
+		}
 
 }
 		

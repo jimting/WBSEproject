@@ -2,38 +2,38 @@ package maze.animal;
 
 public class Direction 
 {
-	private int x;
-	private int y;
-	private int z;
+	private double x;
+	private double y;
+	private double z;
 	
-	private static final int maxAngle = 360;
+	private static final double maxAngle = 360;
 	
 	public Direction()
 	{
 		setDirection(0,0,0);
 	}
 	
-	public Direction(int x ,int y,int z)
+	public Direction(double x ,double y,double z)
 	{
 		setDirection(x,y,z);
 	}
 	
-	public void setDirection(int x,int y,int z)
+	public void setDirection(double x,double y,double z)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
 	
-	public int getX(){
+	public double getX(){
 		return x;
 	}
 	
-	public int getY(){
+	public double getY(){
 		return y;
 	}
 	
-	public int getZ(){
+	public double getZ(){
 		return z;
 	}
 	

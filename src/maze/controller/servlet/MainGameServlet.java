@@ -41,7 +41,8 @@ public class MainGameServlet extends HttpServlet {
 		gameList.get(0).addPlayer(playerNum);
 		playerNum++;
 		System.out.println("my Number is "+playerNum);
-		request.setAttribute("game",gameList.get(0));
+		request.setAttribute("game",gameList);
+		request.setAttribute("gameNum",0);
 		request.setAttribute("playerNum",playerNum);
 		
 		response.setContentType("text/html");

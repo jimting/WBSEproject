@@ -1,4 +1,5 @@
-// Set up the scene, camera, and renderer as global variables.
+main = function (playerNum,mx,mz,move)
+{
 	var scene, renderer;
 	
 	var map;
@@ -6,15 +7,26 @@
 	var clock;
 
 	//用來偵測牆壁碰撞
-	var PLAYERCOLLISIONDISTANCE = 20;
+	
 	//用來裝偵測用的牆壁
 	
 
-	var p = null;
+	var p = [];
+	
 	
 
 	init();
 	animate();
+	
+	function callback(pp,i)
+	{
+		p[i] = pp;
+		console.log(i);
+		if(i==2)
+			setInterval(move,10);
+			
+	}
+	
 	
 
 	// Sets up the scene.
@@ -72,13 +84,38 @@
 		dirLight.shadow.mapSize.width = 6000;
 		dirLight.shadow.mapSize.height = 6000;
 
+		new People(scene,callback,0);
+  		new People(scene,callback,1);
+  		new People(scene,callback,2);
+  		
+  		firstPeople.translateX(mx);
+  		firstPeople.translateZ(mz);
   		
   		
   		
-	
+  		
 		
   		
 
+	}
+	
+	function move() { 
+		$.ajax({ 
+			url: "StoreAndGet?&px="+firstPeople.getDirectionX()+"&pz="+firstPeople.getDirectionZ()+"&playerNum="+playerNum,
+			type: "GET", 
+			success: function(response)
+			{
+				var num = 0;
+				for(i=0;i<4;i++)
+				{
+					if(i==playerNum)
+						continue;
+					p[num].position.set(response[i].position.x,-150,response[i].position.z);
+					num++;
+				}
+			},
+			cache: false 
+		});
 	}
 
 	// Renders the scene and updates the render as needed.
@@ -95,4 +132,4 @@
   		
 	}
 	// Get the pointer lock and start listening for if its state changes
-	
+}	
