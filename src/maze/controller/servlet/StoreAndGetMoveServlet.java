@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import maze.animal.Direction;
+import maze.animal.Position;
 import maze.animal.Player;
 import maze.ready.GameRoom;
 
@@ -37,8 +37,10 @@ public class StoreAndGetMoveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Double px = Double.parseDouble(request.getParameter("px"));
 		Double pz = Double.parseDouble(request.getParameter("pz"));
+		Double rotation = Double.parseDouble(request.getParameter("rotation"));
 		int playerNum = Integer.parseInt(request.getParameter("playerNum"));
-		playerList.get(playerNum).setPosition(new Direction(px,0,pz));
+		playerList.get(playerNum).setPosition(new Position(px,0,pz));
+		playerList.get(playerNum).setRotation(rotation);
 		
 		//System.out.printf("%.3f %.3f %d\n",px,pz,playerNum);
 		String json = new Gson().toJson(playerList);

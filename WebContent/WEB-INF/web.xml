@@ -68,6 +68,6 @@
 	</listener-class>
   </listener>
   <welcome-file-list>
-    <welcome-file>welcome</welcome-file>
+    <welcome-file>MainGame</welcome-file>
   </welcome-file-list>
 </web-app>

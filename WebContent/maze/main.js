@@ -12,18 +12,73 @@ main = function (playerNum,mx,mz,move)
 	
 
 	var p = [];
+	var m = [];
 	
-	
+	var idleAction = [];
+	var walkAction = [];
+	var runAction = [];
 
-	init();
-	animate();
 	
-	function callback(pp,i)
+	function activateAllActions(i) {
+		setWeight( idleAction[i], 0 );
+		setWeight( runAction[i], 100 );
+		idleAction[i].play();
+		runAction[i].play();
+		
+		/*actions.forEach( function ( action ) {
+
+			action.play();
+
+		} );*/
+
+	}
+	
+	var state = [];
+	
+	function unactivateAllActions(i) {
+
+		setWeight( idleAction[i], 100 );
+		setWeight( runAction[i], 0 );
+		
+		idleAction[i].play();
+		runAction[i].play();
+		/*actions.forEach( function ( action ) {
+
+			action.play();
+
+		} );*/
+
+	}
+	
+	function setWeight( action, weight ) {
+
+		action.enabled = true;
+		action.setEffectiveTimeScale( 1 );
+		action.setEffectiveWeight( weight );
+
+	}
+	
+	init();
+	
+	
+	
+	function callback(pp,mixer,i)
 	{
+		
+		idleAction[i] = mixer.clipAction( 'idle' );
+		walkAction[i] = mixer.clipAction( 'walk' );
+		runAction[i] = mixer.clipAction( 'run' );
+		
 		p[i] = pp;
-		console.log(i);
+		m[i] = mixer;
+		runAction[i].play();
+		idleAction[i].play();
+		
 		if(i==2)
-			setInterval(move,10);
+		{
+			setInterval(move,50);
+			animate();
+		}
 			
 	}
 	
@@ -35,12 +90,13 @@ main = function (playerNum,mx,mz,move)
 
 	 	clock = new THREE.Clock();
 		
-
+	 		
 	 	// Create the scene and set the scene size.
  	 	scene = new THREE.Scene();
   		var WIDTH = 1000,
      	HEIGHT = 800;
-
+  		
+  		state[0] = state[1] = state[2] = false;
   		//set background
   		var path = "images/";
 		var format = '.jpg';
@@ -100,8 +156,10 @@ main = function (playerNum,mx,mz,move)
 	}
 	
 	function move() { 
+		
+		
 		$.ajax({ 
-			url: "StoreAndGet?&px="+firstPeople.getDirectionX()+"&pz="+firstPeople.getDirectionZ()+"&playerNum="+playerNum,
+			url: "StoreAndGet?&px="+firstPeople.getDirectionX()+"&pz="+firstPeople.getDirectionZ()+"&playerNum="+playerNum+"&rotation="+firstPeople.getControls().getObject().rotation.y,
 			type: "GET", 
 			success: function(response)
 			{
@@ -110,12 +168,26 @@ main = function (playerNum,mx,mz,move)
 				{
 					if(i==playerNum)
 						continue;
+					p[num].rotation.y = response[i].rotation;
+					if(p[num].position.x == response[i].position.x && p[num].position.z == response[i].position.z)
+					{
+						unactivateAllActions(num);
+						state[i] = false;
+					}
+					else
+					{
+						if(state[i] == false)
+							activateAllActions(num);
+						state[i] = true;
+					}
 					p[num].position.set(response[i].position.x,-150,response[i].position.z);
 					num++;
 				}
+				
 			},
 			cache: false 
 		});
+		
 	}
 
 	// Renders the scene and updates the render as needed.
@@ -127,6 +199,11 @@ main = function (playerNum,mx,mz,move)
 
   		// Get the change in time between frames
   		var delta = clock.getDelta();
+  		for(i=0;i<3;i++)
+  		{
+  			m[i].update(delta);
+  			
+  		}
   		firstPeople.animatePlayer(delta);
   		
   		

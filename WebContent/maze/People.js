@@ -1,11 +1,6 @@
-People = function(scene ,callback,i){
+People = function(scene,callback,i){
 	
-	var idleAction;
-	var walkAction;
-	var runAction;
-	var idleWeight;
-	var walkWeight;
-	var runWeight;
+	
 	var mixer;
 	var people;
 	var clock = new THREE.Clock();
@@ -49,12 +44,10 @@ People = function(scene ,callback,i){
 			mixer = new THREE.AnimationMixer( people );
 			
 			
-			idleAction = mixer.clipAction( 'idle' );
-			walkAction = mixer.clipAction( 'walk' );
-			runAction = mixer.clipAction( 'run' );
 			
 			
-			callback(people,i);
+			
+			callback(people,mixer,i);
 			
 			
 			
@@ -83,25 +76,7 @@ People = function(scene ,callback,i){
 			activateAllActions();
 		}
 		
-		function activateAllActions() {
-
-			setWeight( runAction, 100 );
-			runAction.play();
-			/*actions.forEach( function ( action ) {
-
-				action.play();
-
-			} );*/
-
-		}
 		
-		function setWeight( action, weight ) {
-
-			action.enabled = true;
-			action.setEffectiveTimeScale( 1 );
-			action.setEffectiveWeight( weight );
-
-		}
 		
 		
 		

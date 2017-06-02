@@ -28,19 +28,19 @@ public class Player extends Animal
 		{
 			case 0:
 				setSpeed(12000);
-				setPosition(new Direction(Game.p1Position,0,Game.p1Position));
+				setPosition(new Position(Game.p1Position,0,Game.p1Position));
 				break;
 			case 1:
 				setSpeed(12000);
-				setPosition(new Direction(Game.p2Position,0,Game.p2Position));
+				setPosition(new Position(Game.p2Position,0,Game.p2Position));
 				break;
 			case 2:
 				setSpeed(12000);
-				setPosition(new Direction(Game.p3Position,0,Game.p3Position));
+				setPosition(new Position(Game.p3Position,0,Game.p3Position));
 				break;
 			default :
 				setSpeed(12000);
-				setPosition(new Direction(Game.p4Position,0,Game.p4Position));
+				setPosition(new Position(Game.p4Position,0,Game.p4Position));
 				break;
 		}
 		

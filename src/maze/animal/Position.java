@@ -1,19 +1,17 @@
 package maze.animal;
 
-public class Direction 
+public class Position 
 {
 	private double x;
 	private double y;
 	private double z;
 	
-	private static final double maxAngle = 360;
-	
-	public Direction()
+	public Position()
 	{
 		setDirection(0,0,0);
 	}
 	
-	public Direction(double x ,double y,double z)
+	public Position(double x ,double y,double z)
 	{
 		setDirection(x,y,z);
 	}

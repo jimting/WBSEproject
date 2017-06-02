@@ -38,6 +38,8 @@ FirstPeople= function(scene , collidableObjects ){
 	listenForPlayerMovement();
 	scene.add(controls.getObject());
 	
+	
+	
 	function getPointerLock() {
 		 document.onclick = function () {
 		   container.requestPointerLock();
