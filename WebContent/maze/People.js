@@ -57,28 +57,6 @@ People = function(scene,callback,i){
 		//this.people.position.set(200,0,200);
 		
 
-		this.run = function (){
-			var mixerUpdateDelta = clock.getDelta();
-
-			// If in single step mode, make one step and then do nothing (until the user clicks again)
-
-			/*if ( singleStepMode ) {
-
-				mixerUpdateDelta = sizeOfNextStep;
-				sizeOfNextStep = 0;
-
-			}*/
-
-			// Update the animation mixer, the skeleton and the stats panel, and render this frame
-
-			mixer.update( mixerUpdateDelta );
-			
-			activateAllActions();
-		}
-		
-		
-		
-		
 		
 		this.setPosition = function(x,y,z)
 		{

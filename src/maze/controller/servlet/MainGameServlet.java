@@ -32,6 +32,7 @@ public class MainGameServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Game game = null;
+		RequestDispatcher view;
 		if(gameList == null)
 		{
 			gameList = new ArrayList<Game>();
@@ -40,14 +41,12 @@ public class MainGameServlet extends HttpServlet {
 		}
 		gameList.get(0).addPlayer(playerNum);
 		playerNum++;
-		System.out.println("my Number is "+playerNum);
 		request.setAttribute("game",gameList);
 		request.setAttribute("gameNum",0);
 		request.setAttribute("playerNum",playerNum);
-		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-		RequestDispatcher view = request.getRequestDispatcher("main.jsp");
+		view = request.getRequestDispatcher("main.jsp");
 		view.forward(request, response);
 		
 	}

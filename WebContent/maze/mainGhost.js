@@ -1,16 +1,16 @@
-main = function (playerNum,mx,mz,move)
+mainGhost = function (mx,mz,move)
 {
 	var scene, renderer;
 	
 	var map;
-	var firstPeople;
+	var firstGhost;
 	var clock;
 
 	//用來偵測牆壁碰撞
 	
 	//用來裝偵測用的牆壁
 	
-	var g;
+
 	var p = [];
 	var m = [];
 	
@@ -64,21 +64,17 @@ main = function (playerNum,mx,mz,move)
 	
 	function callback(pp,mixer,i)
 	{
-		if(i==20)
-			g = pp;
-		else
-		{
-			idleAction[i] = mixer.clipAction( 'idle' );
-			walkAction[i] = mixer.clipAction( 'walk' );
-			runAction[i] = mixer.clipAction( 'run' );
-			console.log(pp);
-			p[i] = pp;
-			m[i] = mixer;
-			runAction[i].play();
-			idleAction[i].play();
-		}
 		
-		if(i==2)
+		idleAction[i] = mixer.clipAction( 'idle' );
+		walkAction[i] = mixer.clipAction( 'walk' );
+		runAction[i] = mixer.clipAction( 'run' );
+		
+		p[i] = pp;
+		m[i] = mixer;
+		runAction[i].play();
+		idleAction[i].play();
+		
+		if(i==3)
 		{
 			setInterval(move,50);
 			animate();
@@ -124,7 +120,7 @@ main = function (playerNum,mx,mz,move)
   		
   		map = new Map(scene);
   		
-  		firstPeople = new FirstPeople(scene,map.getCollidableObjects());
+  		firstGhost = new FirstGhost(scene,map.getCollidableObjects());
   		
   		
   		// Create a light, set its position, and add it to the scene.
@@ -143,19 +139,14 @@ main = function (playerNum,mx,mz,move)
 		dirLight.castShadow = true;
 		dirLight.shadow.mapSize.width = 6000;
 		dirLight.shadow.mapSize.height = 6000;
-		
-		
-		new Ghost(scene,callback,20);
+
 		new People(scene,callback,0);
   		new People(scene,callback,1);
   		new People(scene,callback,2);
+  		new People(scene,callback,3);
   		
-  		firstPeople.translateX(mx);
-  		firstPeople.translateZ(mz);
-  		
-  		
-  		
-		
+  		firstGhost.translateX(mx);
+  		firstGhost.translateZ(mz);
   		
 
 	}
@@ -164,15 +155,13 @@ main = function (playerNum,mx,mz,move)
 		
 		
 		$.ajax({ 
-			url: "StoreAndGet?&px="+firstPeople.getDirectionX()+"&pz="+firstPeople.getDirectionZ()+"&playerNum="+playerNum+"&rotation="+firstPeople.getControls().getObject().rotation.y,
+			url: "StoreAndGet?&px="+firstGhost.getDirectionX()+"&pz="+firstGhost.getDirectionZ()+"&playerNum="+playerNum+"&rotation="+firstGhost.getControls().getObject().rotation.y,
 			type: "GET", 
 			success: function(response)
 			{
 				var num = 0;
 				for(i=0;i<4;i++)
 				{
-					if(i==playerNum)
-						continue;
 					p[num].rotation.y = response[i].rotation;
 					if(p[num].position.x == response[i].position.x && p[num].position.z == response[i].position.z)
 					{
@@ -188,8 +177,7 @@ main = function (playerNum,mx,mz,move)
 					p[num].position.set(response[i].position.x,-150,response[i].position.z);
 					num++;
 				}
-				g.position.set(response[4].position.x,-150,response[4].position.z);
-				g.rotation.y = response[i].rotation;
+				
 			},
 			cache: false 
 		});
@@ -201,15 +189,16 @@ main = function (playerNum,mx,mz,move)
 	{
 		
   		requestAnimationFrame( animate );
-  		renderer.render( scene, firstPeople.getCamera() );
+  		renderer.render( scene, firstGhost.getCamera() );
 
   		// Get the change in time between frames
   		var delta = clock.getDelta();
-  		for(i=0;i<3;i++)
+  		for(i=0;i<4;i++)
   		{
   			m[i].update(delta);
+  			
   		}
-  		firstPeople.animatePlayer(delta);
+  		firstGhost.animatePlayer(delta);
   		
   		
 	}

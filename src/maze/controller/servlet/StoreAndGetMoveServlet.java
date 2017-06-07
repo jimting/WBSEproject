@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import maze.animal.Position;
+import maze.animal.Animal;
+import maze.animal.Ghost;
 import maze.animal.Player;
 import maze.ready.GameRoom;
 
@@ -22,13 +24,18 @@ import maze.ready.GameRoom;
 public class StoreAndGetMoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    private ArrayList<Player> playerList;
+    private ArrayList<Animal> playerList;
     
     public StoreAndGetMoveServlet() {
         super();
-        playerList = new ArrayList<Player>();
-        for(int i=0;i<4;i++)
-        	playerList.add(new Player(i));
+        playerList = new ArrayList<Animal>();
+        for(int i=0;i<5;i++)
+        {
+        	if(i<4)
+        		playerList.add(new Player(i));
+        	else
+        		playerList.add(new Ghost(i));
+        }
     }
 
 	/**

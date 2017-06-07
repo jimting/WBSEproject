@@ -21,7 +21,11 @@
 		<script src="maze/PointerLockControl.js"></script>
 		<script src="maze/Map.js"></script>
 		<script src="maze/People.js"></script>
+		<script src="maze/Ghost.js"></script>
+		<script src="maze/FirstGhost.js"></script>
 		<script src="maze/FirstPeople.js"></script>
+		<script src="maze/main.js"></script>
+		<script src="maze/mainGhost.js"></script>
 		
 		
 		
@@ -37,13 +41,15 @@
 
 		</div>
 		<div id='gameBox'>
-			<script src="maze/main.js"></script>
 			
 			<script type="text/javascript">
 				var	playerNum = '${playerNum}' - 1;
 				var mx = '${game[gameNum].playerList[playerNum-1].position.x}';
 				var mz = '${game[gameNum].playerList[playerNum-1].position.z}';
-				var m = main(playerNum,mx,mz);
+				if(playerNum == 4)
+					var g = mainGhost(playerNum,mx,mz);
+				else
+					var m = main(playerNum,mx,mz);
 				
 			</script>	
 		</div>

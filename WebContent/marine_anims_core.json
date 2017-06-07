@@ -1,8 +1,8 @@
 {
     "images":[{
-        "url":"MarineCv2_color1.jpg",
+        "url":"MarineCv2_color.jpg",
         "uuid":"1F3E9A1C-DDD2-3F4D-80C1-BC5F609DC23B",
-        "name":"MarineCv2_color1.jpg"
+        "name":"MarineCv2_color.jpg"
     }],
     "geometries":[{
         "type":"Geometry",
