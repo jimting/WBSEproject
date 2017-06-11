@@ -1,4 +1,4 @@
-mainGhost = function (mx,mz,move)
+mainGhost = function (playerNum,mx,mz)
 {
 	var scene, renderer;
 	
@@ -155,7 +155,7 @@ mainGhost = function (mx,mz,move)
 		
 		
 		$.ajax({ 
-			url: "StoreAndGet?&px="+firstGhost.getDirectionX()+"&pz="+firstGhost.getDirectionZ()+"&playerNum="+playerNum+"&rotation="+firstGhost.getControls().getObject().rotation.y,
+			url: "StoreAndGet?&px="+firstGhost.getDirectionX()+"&pz="+firstGhost.getDirectionZ()+"&playerNum="+playerNum+"&rotation="+firstGhost.getControls().getObject().rotation.y+"&gameNum="+gameNum,
 			type: "GET", 
 			success: function(response)
 			{

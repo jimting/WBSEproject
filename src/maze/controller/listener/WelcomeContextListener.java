@@ -1,8 +1,12 @@
 package maze.controller.listener;
 
+import java.util.ArrayList;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
+import maze.game.Game;
 
 /**
  * Application Lifecycle Listener implementation class WelcomeContextListener
@@ -11,7 +15,6 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class WelcomeContextListener implements ServletContextListener {
 
-    private int playerNum = 0;
     
     public WelcomeContextListener() {
         
@@ -28,7 +31,8 @@ public class WelcomeContextListener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent arg0)  { 
-    	arg0.getServletContext().setAttribute("playerNum",0);
+    	arg0.getServletContext().setAttribute("gameList",new ArrayList<Game>());
+    	System.out.println("123");
     }
 	
 }

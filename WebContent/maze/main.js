@@ -1,4 +1,4 @@
-main = function (playerNum,mx,mz,move)
+main = function (playerNum,mx,mz)
 {
 	var scene, renderer;
 	
@@ -164,7 +164,7 @@ main = function (playerNum,mx,mz,move)
 		
 		
 		$.ajax({ 
-			url: "StoreAndGet?&px="+firstPeople.getDirectionX()+"&pz="+firstPeople.getDirectionZ()+"&playerNum="+playerNum+"&rotation="+firstPeople.getControls().getObject().rotation.y,
+			url: "StoreAndGet?&px="+firstPeople.getDirectionX()+"&pz="+firstPeople.getDirectionZ()+"&playerNum="+playerNum+"&rotation="+firstPeople.getControls().getObject().rotation.y+"&gameNum="+gameNum,
 			type: "GET", 
 			success: function(response)
 			{
@@ -190,10 +190,19 @@ main = function (playerNum,mx,mz,move)
 				}
 				g.position.set(response[4].position.x,-150,response[4].position.z);
 				g.rotation.y = response[i].rotation;
+				var dis = computeCircle(Math.abs(g.position.x - firstPeople.getDirectionX()),Math.abs(g.position.z - firstPeople.getDirectionZ()));
+				
+				if(dis < 200)
+					firstPeople.die();
 			},
 			cache: false 
 		});
 		
+	}
+	
+	function computeCircle(x,y)
+	{
+		return Math.pow((Math.pow(x,2) + Math.pow(y,2)),0.5);
 	}
 
 	// Renders the scene and updates the render as needed.

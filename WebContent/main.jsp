@@ -43,9 +43,10 @@
 		<div id='gameBox'>
 			
 			<script type="text/javascript">
-				var	playerNum = '${playerNum}' - 1;
-				var mx = '${game[gameNum].playerList[playerNum-1].position.x}';
-				var mz = '${game[gameNum].playerList[playerNum-1].position.z}';
+				var	playerNum = '${playerNum}';
+				var gameNum = '${gameNum}';
+				var mx = '${gameList[gameNum].playerList[playerNum].position.x}';
+				var mz = '${gameList[gameNum].playerList[playerNum].position.z}';
 				if(playerNum == 4)
 					var g = mainGhost(playerNum,mx,mz);
 				else

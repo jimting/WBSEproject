@@ -20,6 +20,8 @@ FirstPeople= function(scene , collidableObjects ){
 	var moveBackward = false;
 	var moveLeft = false;
 	var moveRight = false;
+	var onKeyUp;
+	var onKeyDown;
 
 	// Velocity vector for the player
 	var playerVelocity = new THREE.Vector3();
@@ -62,12 +64,12 @@ FirstPeople= function(scene , collidableObjects ){
 		        controlsEnabled = false;
 		    }
 		}
+		
+		
 
 		function listenForPlayerMovement() 
 		{
-
-	   
-			var onKeyDown = function(event) {
+			onKeyDown = function(event) {
 		    	
 				if(event.keyCode == 38 || event.keyCode == 87)
 				{
@@ -91,8 +93,8 @@ FirstPeople= function(scene , collidableObjects ){
 
 	   
 			};
-
-			var onKeyUp = function(event) {
+			
+			onKeyUp = function(event) {
 		    	
 				if(event.keyCode == 38 || event.keyCode == 87)
 				{
@@ -116,7 +118,6 @@ FirstPeople= function(scene , collidableObjects ){
 
 	   
 			};
-
 	 		// Add event listeners for when movement keys are pressed and released
 	  		document.addEventListener('keydown', onKeyDown, false);
 	 		document.addEventListener('keyup', onKeyUp, false);
@@ -246,6 +247,16 @@ FirstPeople= function(scene , collidableObjects ){
 	this.getDirectionZ = function()
 	{
 		return controls.getObject().position.z;
+	}
+	
+	this.die = function()
+	{	
+		controls.getObject().position.y = -137;
+		controls.getObject().rotation.z = -90 * Math.PI / 180;
+		document.removeEventListener('keydown', onKeyDown, false);
+ 		document.removeEventListener('keyup', onKeyUp, false);
+ 		moveBackward = moveLeft = moveRight = moveForward = 0;
+		
 	}
 	
 	

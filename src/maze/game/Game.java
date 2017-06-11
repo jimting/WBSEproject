@@ -20,12 +20,10 @@ public class Game {
 	public Game()
 	{
 		playerList = new ArrayList<Animal>();
+		for(int i=0;i<5;i++)
+			playerList.add(new Player(i));
 	}
 	
-	public void addPlayer(int playerNum)
-	{
-		playerList.add(new Player(playerNum));
-	}
 	
 	public ArrayList<Animal> getPlayerList()
 	{

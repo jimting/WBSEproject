@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import maze.animal.Position;
+import maze.game.Game;
 import maze.animal.Animal;
 import maze.animal.Ghost;
 import maze.animal.Player;
@@ -24,18 +25,10 @@ import maze.ready.GameRoom;
 public class StoreAndGetMoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    private ArrayList<Animal> playerList;
+
     
     public StoreAndGetMoveServlet() {
-        super();
-        playerList = new ArrayList<Animal>();
-        for(int i=0;i<5;i++)
-        {
-        	if(i<4)
-        		playerList.add(new Player(i));
-        	else
-        		playerList.add(new Ghost(i));
-        }
+  
     }
 
 	/**
@@ -46,11 +39,15 @@ public class StoreAndGetMoveServlet extends HttpServlet {
 		Double pz = Double.parseDouble(request.getParameter("pz"));
 		Double rotation = Double.parseDouble(request.getParameter("rotation"));
 		int playerNum = Integer.parseInt(request.getParameter("playerNum"));
-		playerList.get(playerNum).setPosition(new Position(px,0,pz));
-		playerList.get(playerNum).setRotation(rotation);
+		int gameNum = Integer.parseInt(request.getParameter("gameNum"));
+		
+	
+		ArrayList<Game> gameList = (ArrayList<Game>)getServletContext().getAttribute("gameList");
+		gameList.get(gameNum).getPlayerList().get(playerNum).setPosition(new Position(px,0,pz));
+		gameList.get(gameNum).getPlayerList().get(playerNum).setRotation(rotation);
 		
 		//System.out.printf("%.3f %.3f %d\n",px,pz,playerNum);
-		String json = new Gson().toJson(playerList);
+		String json = new Gson().toJson(gameList.get(gameNum).getPlayerList());
 	    response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 	    response.getWriter().write(json);

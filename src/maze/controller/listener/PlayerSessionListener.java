@@ -25,11 +25,11 @@ public class PlayerSessionListener implements HttpSessionListener {
     public void sessionCreated(HttpSessionEvent arg0)  { 
     	HttpSession s = arg0.getSession();
     	System.out.println("coming");
-    	synchronized(s){
+    	/*synchronized(s){
     		int playerNum = (int)s.getServletContext().getAttribute("playerNum");
     		playerNum++;
     		s.getServletContext().setAttribute("playerNum",playerNum);
-    	}
+    	}*/
     }
 
 	/**
@@ -38,11 +38,11 @@ public class PlayerSessionListener implements HttpSessionListener {
     public void sessionDestroyed(HttpSessionEvent arg0)  { 
     	HttpSession s = arg0.getSession();
     	System.out.println("gone");
-    	synchronized(s){
+    	/*synchronized(s){
     		int playerNum = (int)s.getServletContext().getAttribute("playerNum");
     		playerNum--;
     		s.getServletContext().setAttribute("playerNum",playerNum);
-    	}
+    	}*/
     }
 	
 }

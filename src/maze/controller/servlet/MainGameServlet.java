@@ -19,7 +19,7 @@ import maze.game.Game;
 public class MainGameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    private ArrayList<Game> gameList = null;
+  
     private int playerNum = 0;
     
     public MainGameServlet() {
@@ -33,19 +33,26 @@ public class MainGameServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Game game = null;
 		RequestDispatcher view;
-		if(gameList == null)
+		ArrayList<Game> gameList = (ArrayList<Game>) getServletContext().getAttribute("gameList");
+		
+		if(playerNum % 5 == 0)
 		{
-			gameList = new ArrayList<Game>();
 			game = new Game();
 			gameList.add(game);
+			
 		}
-		gameList.get(0).addPlayer(playerNum);
-		playerNum++;
-		request.setAttribute("game",gameList);
-		request.setAttribute("gameNum",0);
-		request.setAttribute("playerNum",playerNum);
+		System.out.println(playerNum);
+		
+		request.setAttribute("gameList",gameList);
+		request.setAttribute("gameNum",playerNum/5);
+		
+		request.setAttribute("playerNum",playerNum%5);
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
+		
+		playerNum++;
+		
+		getServletContext().setAttribute("gameList",gameList);
 		view = request.getRequestDispatcher("main.jsp");
 		view.forward(request, response);
 		
