@@ -10,7 +10,8 @@
 		            	document.getElementById("gameList").innerHTML = "";
 		            	for(i=0;i<response.length;i++)
 		            	{
-		            		document.getElementById("gameList").innerHTML += "" + response[i].roomName + "<br>";
+		            		document.getElementById("gameList").innerHTML += 
+		            			'<a href="room.html" class="toRoom"><li class="list-group-item">'+ response[i].roomName +' <span class="badge">'+ response[i].roomPeople +'</span></li></a>';
 		            	}
 		            },
 		        	dataType: "json",

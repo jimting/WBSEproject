@@ -34,7 +34,9 @@ public class ConstructRoomServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		GameRoom g = new GameRoom(roomNumber,0,"Test" + roomNumber + "");
+		
+		String roomName = request.getParameter("roomName");
+		GameRoom g = new GameRoom(roomNumber,1,roomName);
 		roomNumber++;
 		
 		ArrayList<GameRoom> roomList;
@@ -53,7 +55,7 @@ public class ConstructRoomServlet extends HttpServlet {
 		getServletContext().setAttribute("roomList", roomList);
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-		RequestDispatcher view = request.getRequestDispatcher("welcome.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("room.html?ID="+roomNumber);
 		view.forward(request, response);
 		
 	}
