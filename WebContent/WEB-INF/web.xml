@@ -2,8 +2,9 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>WBSEproject</display-name>
   <welcome-file-list>
-  	<welcome-file>intropage.html</welcome-file>
+    <welcome-file>intropage.html</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <servlet-name>CountPlayerServlet</servlet-name>
     <servlet-class>maze.controller.servlet.CountPlayerServlet</servlet-class>
@@ -12,6 +13,7 @@
     <servlet-name>CountPlayerServlet</servlet-name>
     <url-pattern>/count</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>WelcomeServlet</servlet-name>
     <servlet-class>maze.controller.servlet.WelcomeServlet</servlet-class>
@@ -20,6 +22,7 @@
     <servlet-name>WelcomeServlet</servlet-name>
     <url-pattern>/welcome</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>SomeOneDieServlet</servlet-name>
     <servlet-class>maze.controller.servlet.SomeOneDieServlet</servlet-class>
@@ -28,6 +31,7 @@
     <servlet-name>SomeOneDieServlet</servlet-name>
     <url-pattern>/SomeOneDie</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>LeaveServlet</servlet-name>
     <servlet-class>maze.controller.servlet.LeaveServlet</servlet-class>
@@ -43,6 +47,14 @@
   <servlet-mapping>
     <servlet-name>AutoRefreshRoomServlet</servlet-name>
     <url-pattern>/AutoRefreshRoom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AutoRefreshInRoomServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.AutoRefreshInRoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutoRefreshInRoomServlet</servlet-name>
+    <url-pattern>/AutoRefreshInRoom</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ConstructRoomServlet</servlet-name>
@@ -78,7 +90,4 @@
 			maze.controller.listener.WelcomeContextListener
 	</listener-class>
   </listener>
-  <welcome-file-list>
-    <welcome-file>MainGame</welcome-file>
-  </welcome-file-list>
 </web-app>

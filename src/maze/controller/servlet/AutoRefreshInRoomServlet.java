@@ -3,59 +3,46 @@ package maze.controller.servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
-
 import maze.ready.GameRoom;
 
-
 /**
- * Servlet implementation class autoRefreshPlayerServlet
+ * Servlet implementation class AutoRefreshInRoomServlet
  */
-@WebServlet("/ConstructRoomServlet")
-public class ConstructRoomServlet extends HttpServlet {
+@WebServlet("/AutoRefreshInRoom")
+public class AutoRefreshInRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private int roomNumber;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConstructRoomServlet() {
+    public AutoRefreshInRoomServlet() {
         super();
-        roomNumber = 0;
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		int roomID = Integer.parseInt(request.getParameter("roomID"));
+		System.out.println(roomID);
 		
-		request.setCharacterEncoding("UTF-8");
-		
-		String roomName = request.getParameter("name");
-		GameRoom g = new GameRoom(roomNumber,1,roomName);
-		roomNumber++;
-		
-		ArrayList<GameRoom> roomList;
-		
-		
-		roomList =  (ArrayList<GameRoom>) getServletContext().getAttribute("roomList");
-		
-		
-			
-		
-		roomList.add(g);
-		
-		System.out.println(roomName);
-		getServletContext().setAttribute("roomList", roomList);
-		response.setContentType("text/html");
-		response.setCharacterEncoding("UTF-8");
-		response.sendRedirect("room.html?roomID="+roomNumber);
+		ArrayList<GameRoom> tmpGameRoom = (ArrayList<GameRoom>)getServletContext().getAttribute("roomList");
+		for(GameRoom tmp:tmpGameRoom)
+		{
+			if(tmp.getRoomNumber() == roomID)
+			{
+				System.out.println("印出去了！" + tmp.getRoomPeople());
+				//直接傳人數出去
+			    response.getWriter().write(tmp.getRoomPeople());
+			}
+		}
 	}
 
 	/**
