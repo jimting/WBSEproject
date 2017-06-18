@@ -10,7 +10,11 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script src = "AutoRefreshRoom.js"></script>
+		<script>
+			ajaxFn();
+		</script>
 	</head>
 	<body>
 		<div class="background">
@@ -27,15 +31,41 @@
 			<span style="float:left;">房間列表</span>
 			<span style="float:right;">現在人數</span>
 		</div>
-		<div class="roomlist_area">
-			<ul class="list-group">
-				<a href="room.html" class="toRoom"><li class="list-group-item">房間O <span class="badge">K</span></li></a>
+		<div class="roomlist_area" >
+			<ul class="list-group" id = "gameList">
+				
 			</ul>
 		</div>
 		<div class="button_area">
-			<a href="roomlist.jsp" class="myButton" style="float:left;">創建房間</a>
+			<a class="myButton" style="float:left;" data-toggle="modal" data-target="#createRoom">創建房間</a>
 			<a href="http://www.ntou.edu.tw" class="myButton" style="float:right;">關閉遊戲</a>
 		</div>
 		
+		<!--下面是創建房間的window-->
+		<!-- Modal -->
+		<div id="createRoom" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">創建房間</h4>
+					</div>
+					
+					<div class="modal-body">
+						<div class="form-group">
+						<form action = "ConstructRoom" method = "GET">
+							<label for="usr">房名:</label>
+							<input type="text" class="form-control" name="name">
+							<button type="sumbit"class="btn btn-default">創建</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						</form>
+						</div>
+					</div>
+					
+					</form>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

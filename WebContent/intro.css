@@ -1,4 +1,4 @@
-﻿.background
+.background
 {
 	margin-left:0;
 	width:100%;
@@ -6,8 +6,9 @@
 	position:absolute;
 	background: url(images/mainBackground.png) no-repeat;
 	background-size:100%;
-	z-index:0;
+	z-index:-1;
 }
+
 .button_area
 {
 	bottom:5%;
