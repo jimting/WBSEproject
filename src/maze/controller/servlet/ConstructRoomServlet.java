@@ -55,7 +55,7 @@ public class ConstructRoomServlet extends HttpServlet {
 		getServletContext().setAttribute("roomList", roomList);
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-		RequestDispatcher view = request.getRequestDispatcher("room.html?ID="+roomNumber);
+		RequestDispatcher view = request.getRequestDispatcher("roomlist.html");
 		view.forward(request, response);
 		
 	}

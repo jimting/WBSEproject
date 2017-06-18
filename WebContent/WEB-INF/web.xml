@@ -78,7 +78,4 @@
 			maze.controller.listener.WelcomeContextListener
 	</listener-class>
   </listener>
-  <welcome-file-list>
-    <welcome-file>MainGame</welcome-file>
-  </welcome-file-list>
 </web-app>
