@@ -94,7 +94,7 @@
       		<div class="modal-content">
         
        	 		<div class="modal-body">
-         	 		<p>Game Over!</p>
+         	 		<p>遊戲結束，三秒後跳轉頁面!</p>
        			 </div>
         		
       		</div>

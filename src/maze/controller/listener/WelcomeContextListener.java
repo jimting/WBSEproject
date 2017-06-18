@@ -7,6 +7,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import maze.game.Game;
+import maze.ready.GameRoom;
 
 /**
  * Application Lifecycle Listener implementation class WelcomeContextListener
@@ -32,7 +33,9 @@ public class WelcomeContextListener implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent arg0)  { 
     	arg0.getServletContext().setAttribute("gameList",new ArrayList<Game>());
-    	System.out.println("123");
+    	arg0.getServletContext().setAttribute("roomList",new ArrayList<GameRoom>());
+		
+    	
     }
 	
 }

@@ -39,14 +39,11 @@ public class ConstructRoomServlet extends HttpServlet {
 		
 		ArrayList<GameRoom> roomList;
 		
-		if(getServletContext().getAttribute("roomList")!= null)
-		{
-			roomList =  (ArrayList<GameRoom>) getServletContext().getAttribute("roomList");
-		}
-		else
-		{
-			roomList = new ArrayList<GameRoom>();
-		}
+		
+		roomList =  (ArrayList<GameRoom>) getServletContext().getAttribute("roomList");
+		
+		
+			
 		
 		roomList.add(g);
 		System.out.println(roomList.size());
