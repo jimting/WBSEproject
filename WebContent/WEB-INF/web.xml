@@ -61,6 +61,14 @@
     <url-pattern>/ExitRoom</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>EnterRoomServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.EnterRoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EnterRoomServlet</servlet-name>
+    <url-pattern>/EnterRoom</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ConstructRoomServlet</servlet-name>
     <servlet-class>maze.controller.servlet.ConstructRoomServlet</servlet-class>
   </servlet>

@@ -1,17 +1,18 @@
-﻿<html>
+<html>
 	<head>
 		<title>
-			逃出絕命陣 - 房間列表
+			�k�X���R�} - �ж��C��
 		</title>
 		<link rel="stylesheet" href="roomlist.css">
 		<link rel="stylesheet" href="button.css">
 		
-		<!--導入Bootstrap-->
+		<!--�ɤJBootstrap-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script src = "AutoRefreshRoom.js"></script>
+		<script src = "EnterRoom.js"></script>
 		<script>
 			ajaxFn();
 		</script>
@@ -24,12 +25,12 @@
 			<img src="images/logo.png" class="logo"/>
 		</div>
 		<div class="block">
-			<!--排版用，一直排不好只能建立一個空格了QQ-->
+			<!--�ƪ��ΡA�@���Ƥ��n�u��إߤ@�ӪŮ�FQQ-->
 		</div>
 		<div class="roomlist_header">
-			<!--roomlist的header-->
-			<span style="float:left;">房間列表</span>
-			<span style="float:right;">現在人數</span>
+			<!--roomlist��header-->
+			<span style="float:left;">�ж��C��</span>
+			<span style="float:right;">�{�b�H��</span>
 		</div>
 		<div class="roomlist_area" >
 			<ul class="list-group" id = "gameList">
@@ -37,11 +38,11 @@
 			</ul>
 		</div>
 		<div class="button_area">
-			<a class="myButton" style="float:left;" data-toggle="modal" data-target="#createRoom">創建房間</a>
-			<a href="http://www.ntou.edu.tw" class="myButton" style="float:right;">關閉遊戲</a>
+			<a class="myButton" style="float:left;" data-toggle="modal" data-target="#createRoom">�Ыةж�</a>
+			<a href="http://www.ntou.edu.tw" class="myButton" style="float:right;">�����C��</a>
 		</div>
 		
-		<!--下面是創建房間的window-->
+		<!--�U���O�Ыةж���window-->
 		<!-- Modal -->
 		<div id="createRoom" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -49,16 +50,16 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">創建房間</h4>
+						<h4 class="modal-title">�Ыةж�</h4>
 					</div>
 					
 					<div class="modal-body">
 						<div class="form-group">
 						<form action = "ConstructRoom" method = "GET">
-							<label for="usr">房名:</label>
+							<label for="usr">�ЦW:</label>
 							<input type="text" class="form-control" name="name">
-							<button type="sumbit"class="btn btn-default">創建</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							<button type="sumbit"class="btn btn-default">�Ы�</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">����</button>
 						</form>
 						</div>
 					</div>
