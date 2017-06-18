@@ -1,7 +1,6 @@
 //we store out timerIdhere
 			//we define our function and STORE it in a var
 			function ExitRoom() {
-				
 				var url = window.location.toString(); //取得當前網址
 			    var str = ""; //參數中等號左邊的值
 			    var roomID = ""; //參數中等號右邊的值
@@ -20,7 +19,6 @@
 			            }
 			        }
 			    }
-			    
 		        $.ajax({
 		            url: "ExitRoom",
 		            data:
@@ -36,3 +34,4 @@
 		        	cache: false
 		        	});
 			}
+				

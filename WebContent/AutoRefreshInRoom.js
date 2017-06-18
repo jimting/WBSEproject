@@ -31,7 +31,7 @@
 		            {
 		            	if(response == null)
 		            		return;
-		            	alert(response);
+		            	//alert(response);
 		            	document.getElementById("room_area").innerHTML = "目前玩家：" + response + "人";
 		            },
 		        	dataType: "text",

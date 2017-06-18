@@ -14,7 +14,7 @@ import maze.ready.GameRoom;
 /**
  * Servlet implementation class ExitRoom
  */
-@WebServlet("/ExitRoom")
+@WebServlet("/ExitRoomServlet")
 public class ExitRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,12 +36,20 @@ public class ExitRoomServlet extends HttpServlet {
 		System.out.println("有人從房間"+roomID+"離開了");
 		response.setCharacterEncoding("utf-8");
 		ArrayList<GameRoom> tmpGameRoom = (ArrayList<GameRoom>)getServletContext().getAttribute("roomList");
+		int count = 0;
 		for(GameRoom tmp:tmpGameRoom)
 		{
 			if(tmp.getRoomNumber() == roomID)
 			{
-				tmp.setRoomPeople(tmp.getRoomPeople()-1);
+				if(tmp.getRoomPeople()-1 == 0)
+				{
+					tmpGameRoom.remove(count);
+				}
+				else
+					tmp.setRoomPeople(tmp.getRoomPeople()-1);
+				
 			}
+			count++;
 		}
 	}
 
