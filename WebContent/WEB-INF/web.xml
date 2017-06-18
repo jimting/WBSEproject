@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>intropage.html</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <servlet-name>CountPlayerServlet</servlet-name>
     <servlet-class>maze.controller.servlet.CountPlayerServlet</servlet-class>
@@ -13,7 +12,6 @@
     <servlet-name>CountPlayerServlet</servlet-name>
     <url-pattern>/count</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>WelcomeServlet</servlet-name>
     <servlet-class>maze.controller.servlet.WelcomeServlet</servlet-class>
@@ -22,7 +20,6 @@
     <servlet-name>WelcomeServlet</servlet-name>
     <url-pattern>/welcome</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>SomeOneDieServlet</servlet-name>
     <servlet-class>maze.controller.servlet.SomeOneDieServlet</servlet-class>
@@ -31,7 +28,6 @@
     <servlet-name>SomeOneDieServlet</servlet-name>
     <url-pattern>/SomeOneDie</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>LeaveServlet</servlet-name>
     <servlet-class>maze.controller.servlet.LeaveServlet</servlet-class>
@@ -55,6 +51,14 @@
   <servlet-mapping>
     <servlet-name>AutoRefreshInRoomServlet</servlet-name>
     <url-pattern>/AutoRefreshInRoom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ExitRoomServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.ExitRoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExitRoomServlet</servlet-name>
+    <url-pattern>/ExitRoom</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ConstructRoomServlet</servlet-name>

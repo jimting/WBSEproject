@@ -55,7 +55,7 @@ public class ConstructRoomServlet extends HttpServlet {
 		getServletContext().setAttribute("roomList", roomList);
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
-		response.sendRedirect("room.html?roomID="+roomNumber);
+		response.getWriter().write("<meta http-equiv='refresh' content='0;url=room.html?roomID="+(roomNumber-1)+"' />");
 	}
 
 	/**

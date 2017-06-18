@@ -1,6 +1,6 @@
-﻿//we store out timerIdhere
+//we store out timerIdhere
 			//we define our function and STORE it in a var
-			function ajaxFn() {
+			function ExitRoom() {
 				
 				var url = window.location.toString(); //取得當前網址
 			    var str = ""; //參數中等號左邊的值
@@ -22,7 +22,7 @@
 			    }
 			    
 		        $.ajax({
-		            url: "AutoRefreshInRoom",
+		            url: "ExitRoom",
 		            data:
 		            {
 		            	roomID:roomID
@@ -31,12 +31,8 @@
 		            {
 		            	if(response == null)
 		            		return;
-		            	alert(response);
-		            	document.getElementById("room_area").innerHTML = "目前玩家：" + response + "人";
+		            	document.location.href="roomlist.html";
 		            },
-		        	dataType: "text",
 		        	cache: false
 		        	});
 			}
-			
-			setInterval(ajaxFn,3000)

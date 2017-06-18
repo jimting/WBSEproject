@@ -8,19 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import maze.ready.GameRoom;
 
 /**
- * Servlet implementation class AutoRefreshInRoomServlet
+ * Servlet implementation class ExitRoom
  */
-@WebServlet("/AutoRefreshInRoomServlet")
-public class AutoRefreshInRoomServlet extends HttpServlet {
+@WebServlet("/ExitRoom")
+public class ExitRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AutoRefreshInRoomServlet() {
+    public ExitRoomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,19 +29,18 @@ public class AutoRefreshInRoomServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		int roomID = Integer.parseInt(request.getParameter("roomID"));
-		System.out.println(roomID);
+		System.out.println("有人從房間"+roomID+"離開了");
 		response.setCharacterEncoding("utf-8");
 		ArrayList<GameRoom> tmpGameRoom = (ArrayList<GameRoom>)getServletContext().getAttribute("roomList");
 		for(GameRoom tmp:tmpGameRoom)
 		{
 			if(tmp.getRoomNumber() == roomID)
 			{
-				System.out.println("印出去了！" + tmp.getRoomPeople());
-				//直接傳人數出去
-			    response.getWriter().write("" + tmp.getRoomPeople());
+				tmp.setRoomPeople(tmp.getRoomPeople()-1);
 			}
 		}
 	}
