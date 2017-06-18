@@ -11,7 +11,7 @@
 		            	for(i=0;i<response.length;i++)
 		            	{
 		            		document.getElementById("gameList").innerHTML += 
-		            			'<a href="room.html?roomID='+response[i].roomNumber+'" class="toRoom"><li class="list-group-item">'+ response[i].roomName +' <span class="badge">'+ response[i].roomPeople +'</span></li></a>';
+		            			'<li class="list-group-item" onclick="EnterRoom('+response[i].roomNumber+')" >'+ response[i].roomName +' <span class="badge">'+ response[i].roomPeople +'</span></li>';
 		            	}
 		            },
 		        	dataType: "json",
