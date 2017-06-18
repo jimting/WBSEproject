@@ -18,6 +18,14 @@
     <url-pattern>/welcome</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>SomeOneDieServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.SomeOneDieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SomeOneDieServlet</servlet-name>
+    <url-pattern>/SomeOneDie</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>LeaveServlet</servlet-name>
     <servlet-class>maze.controller.servlet.LeaveServlet</servlet-class>
   </servlet>

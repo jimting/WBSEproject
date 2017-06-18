@@ -27,19 +27,51 @@
 		<script src="maze/main.js"></script>
 		<script src="maze/mainGhost.js"></script>
 		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
 		
 		
 		<link rel="stylesheet" href="stylesheet.css">
 	</head>
 	<body>
-		<div id='container'>
-			<div id="blocker">
-		    <div id="instructions">
-		    	<strong>Click to Start!</strong>
-		    </div>
+		<script type="text/javascript">
+		window.onload =function() 
+		{
+			var i = 4;
+            var loadingID = setInterval(function()
+			{               
+				if(i === 0) 
+				{
+                    document.getElementById("loading").innerHTML =
+					'<div id="container">' +
+						'<div id="blocker">' +
+							'<div id="instructions">' +
+								'<strong>Click to Start!</strong>' +
+							'</div>' +
+						'</div>'+
+					'</div>';
+					blocker = document.getElementById('blocker');
+					clearInterval(loadingID);
+				}
+                document.getElementById("count").innerHTML = i--;
+            },1000);
+        };
+        
+      
+		</script>
+		<div id='loading'>
+			<div id="instructions">
+				<span id="count">5</span>秒後遊戲開始
+			</div>
 		</div>
+		
+		
+  
 
-		</div>
+
+		
 		<div id='gameBox'>
 			
 			<script type="text/javascript">
@@ -54,6 +86,21 @@
 				
 			</script>	
 		</div>
+		
+		<div class="modal fade" id="myModal" role="dialog">
+    		<div class="modal-dialog">
+    
+      <!-- Modal content-->
+      		<div class="modal-content">
+        
+       	 		<div class="modal-body">
+         	 		<p>Game Over!</p>
+       			 </div>
+        		
+      		</div>
+      
+    	</div>
+  	</div>
 		
 		
 	

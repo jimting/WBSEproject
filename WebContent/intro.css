@@ -1,0 +1,19 @@
+﻿.background
+{
+	width:100%;
+	height:100%;
+	position:absolute;
+}
+.background_img
+{
+	width:100%;
+	height:100%;
+	position: fixed;
+	z-index:-1;
+}
+.button_area
+{
+	margin-top:50%;
+	margin-left:5%;
+	position:absolute;
+}

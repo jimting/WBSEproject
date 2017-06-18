@@ -1,10 +1,11 @@
 main = function (playerNum,mx,mz)
 {
 	var scene, renderer;
-	
+	var talk;
 	var map;
 	var firstPeople;
 	var clock;
+	var isAlive = true;
 
 	//用來偵測牆壁碰撞
 	
@@ -80,7 +81,7 @@ main = function (playerNum,mx,mz)
 		
 		if(i==2)
 		{
-			setInterval(move,50);
+			talk = setInterval(move,50);
 			animate();
 		}
 			
@@ -160,19 +161,41 @@ main = function (playerNum,mx,mz)
 
 	}
 	
-	function move() { 
+function move () { 
 		
 		
 		$.ajax({ 
-			url: "StoreAndGet?&px="+firstPeople.getDirectionX()+"&pz="+firstPeople.getDirectionZ()+"&playerNum="+playerNum+"&rotation="+firstPeople.getControls().getObject().rotation.y+"&gameNum="+gameNum,
-			type: "GET", 
+			url: "StoreAndGet",
+			type: "POST", 
+			data:
+			{
+				px:firstPeople.getDirectionX(),
+				pz:firstPeople.getDirectionZ(),
+				playerNum:playerNum,
+				rotation:firstPeople.getControls().getObject().rotation.y,
+				gameNum:gameNum,
+				isAlive:isAlive
+			},
 			success: function(response)
 			{
 				var num = 0;
 				for(i=0;i<4;i++)
 				{
+					if(response[i].isAlive == false)
+					{
+						if(i==playerNum)
+						{
+							firstPeople.die();
+						}
+						else
+							p[num].rotation.z = Math.PI / 2;
+					}
+					
 					if(i==playerNum)
+					{
 						continue;
+					}
+					
 					p[num].rotation.y = response[i].rotation;
 					if(p[num].position.x == response[i].position.x && p[num].position.z == response[i].position.z)
 					{
@@ -190,20 +213,33 @@ main = function (playerNum,mx,mz)
 				}
 				g.position.set(response[4].position.x,-150,response[4].position.z);
 				g.rotation.y = response[i].rotation;
-				var dis = computeCircle(Math.abs(g.position.x - firstPeople.getDirectionX()),Math.abs(g.position.z - firstPeople.getDirectionZ()));
 				
-				if(dis < 200)
-					firstPeople.die();
+				
+				for(i=0;i<4;i++)
+				{
+					if(response[i].isAlive == true)
+					{
+						break;
+					}
+					
+				}
+				if(i==4)
+				{
+					$("#myModal").modal('show');  
+					setTimeout(function()
+							{
+										
+										window.location.href = "roomlist.html";
+										clearInterval(talk);	
+							},3000);
+				}
 			},
 			cache: false 
 		});
 		
 	}
 	
-	function computeCircle(x,y)
-	{
-		return Math.pow((Math.pow(x,2) + Math.pow(y,2)),0.5);
-	}
+	
 
 	// Renders the scene and updates the render as needed.
 	function animate() 

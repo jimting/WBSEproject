@@ -13,7 +13,7 @@ FirstPeople= function(scene , collidableObjects ){
 	var PLAYERCOLLISIONDISTANCE = 20;
 
 	// HTML elements to be changed
-	var blocker = document.getElementById('blocker');
+	
 
 	// Flags to determine which direction the player is moving
 	var moveForward = false;

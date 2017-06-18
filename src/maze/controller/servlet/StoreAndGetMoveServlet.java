@@ -43,6 +43,7 @@ public class StoreAndGetMoveServlet extends HttpServlet {
 		
 	
 		ArrayList<Game> gameList = (ArrayList<Game>)getServletContext().getAttribute("gameList");
+	
 		gameList.get(gameNum).getPlayerList().get(playerNum).setPosition(new Position(px,0,pz));
 		gameList.get(gameNum).getPlayerList().get(playerNum).setRotation(rotation);
 		

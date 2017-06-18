@@ -6,7 +6,13 @@ public abstract class Animal
 {
 	private Position position;
 	private double rotation;
+	private boolean isAlive;
 	private int speed;
+	
+	public Animal()
+	{
+		isAlive = true;
+	}
 	
 	public void setSpeed(int speed)
 	{
@@ -60,6 +66,14 @@ public abstract class Animal
 				break;
 		}
 		
+	}
+
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
 	}
 	
 }

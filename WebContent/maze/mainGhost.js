@@ -5,6 +5,8 @@ mainGhost = function (playerNum,mx,mz)
 	var map;
 	var firstGhost;
 	var clock;
+	var isAlive = [];
+	var talk;
 
 	//用來偵測牆壁碰撞
 	
@@ -34,6 +36,11 @@ mainGhost = function (playerNum,mx,mz)
 	}
 	
 	var state = [];
+	
+	function computeCircle(x,y)
+	{
+		return Math.pow((Math.pow(x,2) + Math.pow(y,2)),0.5);
+	}
 	
 	function unactivateAllActions(i) {
 
@@ -76,7 +83,7 @@ mainGhost = function (playerNum,mx,mz)
 		
 		if(i==3)
 		{
-			setInterval(move,50);
+			talk = setInterval(move,50);
 			animate();
 		}
 			
@@ -155,13 +162,40 @@ mainGhost = function (playerNum,mx,mz)
 		
 		
 		$.ajax({ 
-			url: "StoreAndGet?&px="+firstGhost.getDirectionX()+"&pz="+firstGhost.getDirectionZ()+"&playerNum="+playerNum+"&rotation="+firstGhost.getControls().getObject().rotation.y+"&gameNum="+gameNum,
-			type: "GET", 
+			url: "StoreAndGet",
+			type: "POST", 
+			data:
+			{
+				px:firstGhost.getDirectionX(),
+				pz:firstGhost.getDirectionZ(),
+				playerNum:playerNum,
+				rotation:firstGhost.getControls().getObject().rotation.y,
+				gameNum:gameNum,
+			},
 			success: function(response)
 			{
 				var num = 0;
 				for(i=0;i<4;i++)
 				{
+					if(response[num].isAlive == false)
+					{
+						p[num].rotation.z = Math.PI / 2;
+					}
+					
+					var dis = computeCircle(Math.abs(response[num].position.x - firstGhost.getDirectionX()),Math.abs(response[num].position.z - firstGhost.getDirectionZ()));
+					
+					if(dis < 200)
+					{
+						$.ajax({ 
+							url: "SomeOneDie",
+							type: "POST", 
+							data:{
+								playerNum:num,
+								gameNum:gameNum
+							},
+							cahce: false
+						});
+					}
 					p[num].rotation.y = response[i].rotation;
 					if(p[num].position.x == response[i].position.x && p[num].position.z == response[i].position.z)
 					{
@@ -176,6 +210,25 @@ mainGhost = function (playerNum,mx,mz)
 					}
 					p[num].position.set(response[i].position.x,-150,response[i].position.z);
 					num++;
+				}
+				
+				for(i=0;i<4;i++)
+				{
+					if(response[i].isAlive == true)
+					{
+						break;
+					}
+					
+				}
+				if(i==4)
+				{
+					$("#myModal").modal('show');  
+					setTimeout(function()
+							{
+										
+										window.location.href = "roomlist.html";
+										clearInterval(talk);	
+							},3000);
 				}
 				
 			},
