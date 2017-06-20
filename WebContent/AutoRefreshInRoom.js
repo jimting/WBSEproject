@@ -53,6 +53,13 @@
 		            	document.getElementById("chattingContext").innerHTML += "<div id='bottom'></div>";
 		            	var element = document.getElementById("chattingContext");
 		            	element.scrollTop = element.scrollHeight;
+		            	
+		            	//check人數與室長
+		            	var checkLeader = CheckLeader();
+		            	if((checkLeader) && (response.Players.length == 5))
+		            	{
+		            		document.getElementById("startButtonArea").innerHTML = '<a href="main.jsp" class="myButton" style="float:left;">開始遊戲</a>'
+		            	}
 		            },
 		        	dataType: "json",
 		        	cache: false

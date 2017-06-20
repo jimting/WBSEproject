@@ -67,4 +67,15 @@ public class GameRoom {
 		String result = userName + ":" + chat;
 		this.chat.add(result);
 	}
+	public String getLeader()
+	{
+		for(Player k : this.Players)
+		{
+			if(k.isLeader())
+			{
+				return k.getUserName();
+			}
+		}
+		return null;
+	}
 }
