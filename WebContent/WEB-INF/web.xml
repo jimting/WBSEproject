@@ -69,6 +69,14 @@
     <url-pattern>/EnterRoom</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>SettingNameServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.SettingNameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SettingNameServlet</servlet-name>
+    <url-pattern>/SettingName</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ConstructRoomServlet</servlet-name>
     <servlet-class>maze.controller.servlet.ConstructRoomServlet</servlet-class>
   </servlet>
