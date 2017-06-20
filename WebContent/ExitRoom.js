@@ -27,8 +27,6 @@
 		            },
 		            success: function (response) 
 		            {
-		            	if(response == null)
-		            		return;
 		            	document.location.href="roomlist.html";
 		            },
 		        	cache: false
