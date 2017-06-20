@@ -88,3 +88,28 @@
 	color:white;
 	font-size:40px;
 }
+.chattingRoom
+{
+	float:right;
+	width:50%;
+    height:500px;
+    font-size:36px;
+}
+.userData
+{
+	float:left;
+	width:50%;
+    height:500px;
+}
+.chattingContext
+{
+	opacity: 1.0; 
+    filter: alpha(opacity=100); 
+}
+.chatButton
+{
+	opacity: 1.0; 
+    filter: alpha(opacity=100); 
+	margin-bottom:5px;
+	float:right;
+}

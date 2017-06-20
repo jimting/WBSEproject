@@ -32,7 +32,7 @@
 		            	if(response == null)
 		            		return;
 		            	//alert(response);
-		            	document.getElementById("room_area").innerHTML = "<span id='roomText'>目前玩家：" + response + "人</span>";
+		            	document.getElementById("userData").innerHTML = "<span id='roomText'>目前玩家：" + response + "人</span>";
 		            },
 		        	dataType: "text",
 		        	cache: false
