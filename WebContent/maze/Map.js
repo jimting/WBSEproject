@@ -112,7 +112,7 @@ Map = function (scene,collidableObjects){
 		//這邊隨機生成牆壁
 		for(i=1;i<=mapSize;i++)
 			for(j=1;j<=mapSize;j++)
-					if(map[i][j] == 1)
+					if(map[i-1][j-1] == 1)
 					{
 						wall[wallnum] = new createWall(0,innerWall);
 						wall[wallnum].position.set(j*wallStandard-wallStandard/2,0,i*wallStandard-wallStandard);
@@ -124,7 +124,7 @@ Map = function (scene,collidableObjects){
 		
 		for(i=1;i<=mapSize;i++)
 			for(j=1;j<=mapSize;j++)
-					if(map[j][i] == 1)
+					if(map[j-1][i-1] == 1)
 					{
 						wall[wallnum] = new createWall(1,innerWall);
 						wall[wallnum].position.set(j*wallStandard-wallStandard/2,0,i*wallStandard-wallStandard);
