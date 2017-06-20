@@ -5,7 +5,7 @@ function getUserName(){
 		{
 			if(response == null)
 				return;
-			document.getElementById("userName").innerHTML ="<strong>"+ response + "</strong>你好";
+			document.getElementById("userName").innerHTML ="Welcome!! <strong>"+ response + "</strong>";
 		},
 		dataType: "text",
 		cache: false
