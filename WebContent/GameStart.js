@@ -1,4 +1,4 @@
-function GameStart() {
+﻿function GameStart() {
 				
 				var url = window.location.toString(); //取得當前網址
 			    var str = ""; //參數中等號左邊的值

@@ -20,7 +20,26 @@ mainGhost = function (playerNum,mx,mz)
 	var walkAction = [];
 	var runAction = [];
 
+	//用來存放Counter
+	var Counter = document.getElementById('winCounter');
+	Counter.style.display= '';
 	
+	function winCounter()
+	{
+		var left = 65;
+        var counterTmp = setInterval(function()
+		{
+			if(left == 0) 
+			{
+                Counter.innerHTML = "遊戲結束！";
+				document.location.href="roomlist.html";
+				clearInterval(counterTmp);
+			}
+			//alert(left);
+            Counter.innerHTML = "時間剩下" + left + "秒";
+            left--;
+        },1000);
+	}
 	function activateAllActions(i) {
 		setWeight( idleAction[i], 0 );
 		setWeight( runAction[i], 100 );
@@ -66,7 +85,7 @@ mainGhost = function (playerNum,mx,mz)
 	}
 	
 	init();
-	
+	winCounter();
 	
 	
 	function callback(pp,mixer,i)
@@ -155,7 +174,6 @@ mainGhost = function (playerNum,mx,mz)
   		firstGhost.translateX(mx);
   		firstGhost.translateZ(mz);
   		
-
 	}
 	
 	function move() { 

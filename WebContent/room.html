@@ -1,12 +1,12 @@
-<html>
+﻿<html>
 	<head>
 		<title>
-			�k�X���R�} - �ǳƥX�o
+			逃出絕命陣 - 準備出發
 		</title>
 		<link rel="stylesheet" href="roomlist.css">
 		<link rel="stylesheet" href="button.css">
 		
-		<!--�ɤJBootstrap-->
+		<!--導入Bootstrap-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -25,6 +25,8 @@
 		
 	</head>
 	<body>
+		<embed src="Music/startBGM.mp3" height="0" width="0" />
+		
 		<div class="background">
 			<img src="images/room_background.png" class="background_img"/>
 		</div>
@@ -32,25 +34,25 @@
 			<img src="images/logo.png" class="logo"/>
 		</div>
 		<div class="block">
-			<!--�ƪ��ΡA�@���Ƥ��n�u��إߤ@�ӪŮ�FQQ-->
+			<!--排版用，一直排不好只能建立一個空格了QQ-->
 		</div>
 		<div class="roomlist_header">
-			<!--roomlist��header-->
-			<span style="text-align:center;">�ж����ݤ� - �ǳƥX�o</span>
+			<!--roomlist的header-->
+			<span style="text-align:center;">房間等待中 - 準備出發</span>
 		</div>
 		<div class="room_area" id="room_area">
 			<div class="userData" id="userData"></div>
 			<div class="chattingRoom">
 				<div class="chattingContext" id="chattingContext"></div>
 				<div class="inputArea" id = "inputArea">
-					<input class="userInput" id="userInput" name="userInput" placeholder="�п�J��ѰT��" />
-					<button class="myButton chatButton" onclick="ChattingRoom()">�e�X</button>
+					<input class="userInput" id="userInput" name="userInput" placeholder="請輸入聊天訊息" />
+					<button class="myButton chatButton" onclick="ChattingRoom()">送出</button>
 				</div>
 			</div>
 		</div>
 		<div class="button_area">
 			<div id="startButtonArea"></div>
-			<button class="myButton" style="float:right;" onclick="ExitRoom()" >���}�ж�</button>
+			<button class="myButton" style="float:right;" onclick="ExitRoom()" >離開房間</button>
 		</div>
 		
 	</body>

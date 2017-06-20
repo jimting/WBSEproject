@@ -35,6 +35,7 @@ main = function (playerNum,mx,mz)
 				document.location.href="roomlist.html";
 				clearInterval(counterTmp);
 			}
+			//alert(left);
             Counter.innerHTML = "時間剩下" + left + "秒";
             left--;
         },1000);
@@ -80,6 +81,7 @@ main = function (playerNum,mx,mz)
 	}
 	
 	init();
+	winCounter();
 	
 	
 	
@@ -174,10 +176,7 @@ main = function (playerNum,mx,mz)
   		firstPeople.translateX(mx);
   		firstPeople.translateZ(mz);
   		
-  		
-  		winCounter();
 		
-  		
 
 	}
 	

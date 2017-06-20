@@ -80,7 +80,8 @@
 
 		
 		<div id='gameBox'>
-			
+			<embed src="Music/gaming.mp3" height="0" width="0" />
+		
 			<script type="text/javascript">
 				var	playerNum = '${playerNum}';
 				var gameNum = '${gameNum}';
