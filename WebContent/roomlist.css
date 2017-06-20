@@ -31,7 +31,7 @@
 	font-size:36px;
 	border-radius:10px;
 }
-.roomlist_area,.room_area
+.roomlist_area
 {
 	width:70%;
 	height:500px;
@@ -41,6 +41,17 @@
 	margin:0px auto;
 	position:relative;
 	overflow-y:auto;
+}
+.roomlist_area
+{
+	width:70%;
+	height:500px;
+	background-color:black;
+	opacity: 0.5; 
+    filter: alpha(opacity=50); 
+	margin:0px auto;
+	position:relative;
+	overflow:none;
 }
 .button_area
 {
@@ -85,7 +96,8 @@
 }
 #roomText
 {
-	color:white;
+	text-align:center;
+	color:black;
 	font-size:40px;
 }
 .chattingRoom

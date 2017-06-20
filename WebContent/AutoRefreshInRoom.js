@@ -32,9 +32,9 @@
 		            	if(response == null)
 		            		return;
 		            	//alert(response);
-		            	document.getElementById("userData").innerHTML = "<span id='roomText'>" + response[0].userName + "</span>";
+		            	document.getElementById("userData").innerHTML = "<span class='list-group-item' id='roomText'>" + response.Players[0].userName + "</span>";
 		            },
-		        	dataType: "text",
+		        	dataType: "json",
 		        	cache: false
 		        	});
 			}
