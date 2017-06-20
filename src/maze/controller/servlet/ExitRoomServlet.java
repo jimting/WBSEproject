@@ -47,7 +47,7 @@ public class ExitRoomServlet extends HttpServlet {
 				}
 				else
 					tmp.setRoomPeople(tmp.getRoomPeople()-1);
-				
+				break;
 			}
 			count++;
 		}

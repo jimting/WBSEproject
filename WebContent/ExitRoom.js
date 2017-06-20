@@ -1,4 +1,4 @@
-//we store out timerIdhere
+﻿//we store out timerIdhere
 			//we define our function and STORE it in a var
 			function ExitRoom() {
 				var url = window.location.toString(); //取得當前網址
