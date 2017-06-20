@@ -43,6 +43,8 @@ public class SettingNameServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("userName", userName);
 		
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write("<meta http-equiv='refresh' content='0;url=roomlist.html' />");
 	
 	}
