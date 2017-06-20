@@ -39,8 +39,7 @@
 		
 		<link rel="stylesheet" href="stylesheet.css">
 	</head>
-	<body onload="go()">
-	<audio id="audio" src="Music/gaming.mp3" style="opacity:0" preload="auto" controls loop hidden="true"/>
+	<body>
 		<script type="text/javascript">
 		window.onload =function() 
 		{
@@ -67,15 +66,16 @@
       
 		</script>
 		
-		<div id = "counter "></div>
+		<div id = "counter"></div>
 		<div id='loading'>
 			<div id="instructions">
 				<span id="count">5</span>秒後遊戲開始
 			</div>
 		</div>
-		
-		
   
+		<div id = "winContainer">
+			<div id = "winCounter"></div>
+		</div>
 
 
 		

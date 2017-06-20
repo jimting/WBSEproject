@@ -46,7 +46,16 @@
 			text-align: center;
 			cursor: pointer;
 		}
-		#counter
+		#winContainer
+		{
+			width: 24.5%;
+			height: 100%;
+			position: absolute;
+			left: 73.2%;
+    		cursor: crosshair;
+    		input:focus { color: white };
+		}
+		#winCounter
 		{
 			position: relative;
 			top: 3%;

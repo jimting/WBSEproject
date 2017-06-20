@@ -8,7 +8,7 @@ main = function (playerNum,mx,mz)
 	var isAlive = true;
 
 	//用來存放Counter
-	var Counter = document.getElementById('counter');
+	var Counter = document.getElementById('winCounter');
 	Counter.style.display= '';
 	
 	
@@ -24,19 +24,19 @@ main = function (playerNum,mx,mz)
 	var walkAction = [];
 	var runAction = [];
 
-	
-	function counter()
+	function winCounter()
 	{
-		var i = 65;
+		var left = 65;
         var counterTmp = setInterval(function()
 		{
-			if(i === 0) 
+			if(left == 0) 
 			{
                 Counter.innerHTML = "遊戲結束！";
-				clearInterval(loadingID);
 				document.location.href="roomlist.html";
+				clearInterval(counterTmp);
 			}
-            Counter.innerHTML = "時間剩下" + i + "秒";
+            Counter.innerHTML = "時間剩下" + left + "秒";
+            left--;
         },1000);
 	}
 	
@@ -112,7 +112,6 @@ main = function (playerNum,mx,mz)
 	// Sets up the scene.
 	function init()
 	 {
-		counter();
 
 	 	clock = new THREE.Clock();
 		
@@ -176,7 +175,7 @@ main = function (playerNum,mx,mz)
   		firstPeople.translateZ(mz);
   		
   		
-  		
+  		winCounter();
 		
   		
 
