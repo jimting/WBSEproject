@@ -42,7 +42,7 @@
 	position:relative;
 	overflow-y:auto;
 }
-.roomlist_area
+.room_area
 {
 	width:70%;
 	height:500px;
@@ -96,8 +96,7 @@
 }
 #roomText
 {
-	text-align:center;
-	color:black;
+	color:white;
 	font-size:40px;
 }
 .chattingRoom
@@ -109,6 +108,7 @@
 }
 .userData
 {
+	backgrond-color:gray;
 	float:left;
 	width:50%;
     height:500px;
@@ -137,4 +137,12 @@
 	height:100px;
 	float:left;
 	position:relative;
+}
+.userName
+{
+	text-align:center;
+	backgrond-color:white;
+	border:solid;
+	border-width:2px;
+	border-radius:10px;
 }

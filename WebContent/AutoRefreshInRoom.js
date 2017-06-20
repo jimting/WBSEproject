@@ -32,7 +32,24 @@
 		            	if(response == null)
 		            		return;
 		            	//alert(response);
-		            	document.getElementById("userData").innerHTML = "<span class='list-group-item' id='roomText'>" + response.Players[0].userName + "</span>";
+		            	var i = 0;
+		            	
+		            	//列出所有房間夥伴
+		            	document.getElementById("userData").innerHTML = "";
+		            	while(response.Players[i].userName != "")
+		            	{
+		            		document.getElementById("userData").innerHTML += "<div class='userName' id='roomText'>" + response.Players[i].userName;
+		            		if(response.Players[i].leader == 'true')
+		            		{
+		            			document.getElementById("userData").innerHTML += " - 室長</div>";
+		            		}
+		            		else
+		            		{
+		            			document.getElementById("userData").innerHTML += "123</div>";
+		            		}
+		            		i++;
+		            	}
+		            	
 		            },
 		        	dataType: "json",
 		        	cache: false
