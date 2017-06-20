@@ -7,6 +7,8 @@ Map = function (scene,collidableObjects){
 	
 	createRoad();
 	
+	
+	
 	function createWall(isVertical,material)
 	{
 		var geometry = [];
@@ -22,7 +24,27 @@ Map = function (scene,collidableObjects){
 
 	function createRoad(array)
 	{
-
+		var map = [[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+				[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+				[0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+				[0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+				[0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+				[1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+				[0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
+				[1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+				[1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0],
+				[0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+				[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+				[0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0],
+				[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+				[0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1],
+				[0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+		
 		var textureLoader = new THREE.TextureLoader();
 
 		var innerWall =  new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture('images/innerwall.jpg')});
@@ -90,7 +112,7 @@ Map = function (scene,collidableObjects){
 		//這邊隨機生成牆壁
 		for(i=1;i<=mapSize;i++)
 			for(j=1;j<=mapSize;j++)
-					if(Math.random() > 0.8)
+					if(map[i][j] == 1)
 					{
 						wall[wallnum] = new createWall(0,innerWall);
 						wall[wallnum].position.set(j*wallStandard-wallStandard/2,0,i*wallStandard-wallStandard);
@@ -102,7 +124,7 @@ Map = function (scene,collidableObjects){
 		
 		for(i=1;i<=mapSize;i++)
 			for(j=1;j<=mapSize;j++)
-					if(Math.random() > 0.8)
+					if(map[j][i] == 1)
 					{
 						wall[wallnum] = new createWall(1,innerWall);
 						wall[wallnum].position.set(j*wallStandard-wallStandard/2,0,i*wallStandard-wallStandard);
