@@ -30,7 +30,7 @@ function GameStatus() {
 		            	
 		            	if(response == '1')	
 		            	{
-		            		post(MainGame);
+		            		post("MainGame",{roomID:roomID});
 		            	}
 		            },
 		        	cache: false
