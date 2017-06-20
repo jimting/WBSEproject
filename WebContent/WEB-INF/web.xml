@@ -77,6 +77,14 @@
     <url-pattern>/SettingName</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>GetUserNameServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.GetUserNameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetUserNameServlet</servlet-name>
+    <url-pattern>/GetUserName</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ConstructRoomServlet</servlet-name>
     <servlet-class>maze.controller.servlet.ConstructRoomServlet</servlet-class>
   </servlet>

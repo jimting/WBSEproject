@@ -19,8 +19,11 @@
 			<a class="intro" href="#" data-toggle="modal" data-target="#Intro"><img src="images/intro.png" height="50px"/></a>
 		</div>
 		<div class="button_area">
-			<a href="roomlist.html" class="myButton">確定進入</a>
-			<a href="http://www.ntou.edu.tw" class="myButton">我要離開</a>
+			<form action="SettingName" method="POST">
+				<input type="text" name="userName" placeholder="請輸入暱稱" required="required"></input>
+				<button type="submit" class="myButton">確定進入</button>
+				<a href="http://www.ntou.edu.tw" class="myButton">我要離開</a>
+			</form>
 		</div>
 		<!--下面是遊戲介紹的window-->
 		<!-- Modal -->
