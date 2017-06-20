@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -37,18 +38,18 @@ public class ConstructRoomServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+		HttpSession session = request.getSession();
+		String userName = (String)session.getAttribute("userName");
+		
 		String roomName = request.getParameter("name");
 		GameRoom g = new GameRoom(roomNumber,1,roomName);
+		g.newPlayers(userName,true);
 		roomNumber++;
-		
+	
 		ArrayList<GameRoom> roomList;
-		
-		
+
 		roomList =  (ArrayList<GameRoom>) getServletContext().getAttribute("roomList");
-		
-		
-			
-		
+
 		roomList.add(g);
 		
 		System.out.println(roomName);

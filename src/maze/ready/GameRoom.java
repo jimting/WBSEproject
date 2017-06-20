@@ -1,12 +1,16 @@
 package maze.ready;
 
+import java.util.ArrayList;
+
 public class GameRoom {
 
 	private int roomNumber;
 	private int roomPeople;
 	private String roomName;
+	private ArrayList<Player> Players;
 	
 	public GameRoom(int roomNumber,int roomPeople,String roomName){
+		Players = new ArrayList<Player>(5);
 		setRoomPeople(roomPeople);
 		setRoomNumber(roomNumber);
 		setRoomName(roomName);
@@ -30,6 +34,31 @@ public class GameRoom {
 	}
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
+	}
+	public void newPlayers(String userName,boolean leader)
+	{
+		Player newPlayer = new Player(userName,leader);
+		this.Players.add(newPlayer);
+	}
+	public void deletePlayers(String userName)
+	{
+		for(int i = 0;i < this.Players.size();i++)
+		{
+			Player tmp = this.Players.get(i);
+			if(tmp.getUserName().equals(userName))
+			{
+				if(tmp.isLeader())
+				{
+					//把市長給下一個人
+					this.Players.get(i+1).setLeader(true);
+					this.Players.remove(i);
+				}
+				else
+				{
+					this.Players.remove(i);
+				}
+			}
+		}
 	}
 	
 }

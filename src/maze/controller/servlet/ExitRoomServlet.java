@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import maze.ready.GameRoom;
 
@@ -33,7 +34,10 @@ public class ExitRoomServlet extends HttpServlet {
 	{
 		// TODO Auto-generated method stub
 		int roomID = Integer.parseInt(request.getParameter("roomID"));
-		System.out.println("有人從房間"+roomID+"離開了");
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		String userName = (String)session.getAttribute("userName");
+		System.out.println(userName + "從房間"+roomID+"離開了");
 		response.setCharacterEncoding("utf-8");
 		ArrayList<GameRoom> tmpGameRoom = (ArrayList<GameRoom>)getServletContext().getAttribute("roomList");
 		int count = 0;
@@ -46,7 +50,10 @@ public class ExitRoomServlet extends HttpServlet {
 					tmpGameRoom.remove(count);
 				}
 				else
+				{
 					tmp.setRoomPeople(tmp.getRoomPeople()-1);
+					tmp.deletePlayers(userName);
+				}
 				break;
 			}
 			count++;

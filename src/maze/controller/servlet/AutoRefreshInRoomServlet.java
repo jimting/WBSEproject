@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
 import maze.ready.GameRoom;
 
 /**
@@ -37,8 +40,9 @@ public class AutoRefreshInRoomServlet extends HttpServlet {
 		{
 			if(tmp.getRoomNumber() == roomID)
 			{
-				//直接傳人數出去
-			    response.getWriter().write("" + tmp.getRoomPeople());
+				String json = new Gson().toJson(tmp);
+				//這邊要傳房間資料出去
+			    response.getWriter().write(json);
 			}
 		}
 	}

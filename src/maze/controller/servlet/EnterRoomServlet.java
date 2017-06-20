@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import maze.ready.GameRoom;
 
@@ -32,7 +33,10 @@ public class EnterRoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int roomID = Integer.parseInt(request.getParameter("roomID"));
-		System.out.println("有人進入房間"+roomID);
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		String userName = (String)session.getAttribute("userName");
+		System.out.println(userName + "進入房間" + roomID);
 		response.setCharacterEncoding("utf-8");
 		ArrayList<GameRoom> tmpGameRoom = (ArrayList<GameRoom>)getServletContext().getAttribute("roomList");
 		for(GameRoom tmp:tmpGameRoom)
@@ -40,6 +44,7 @@ public class EnterRoomServlet extends HttpServlet {
 			if(tmp.getRoomNumber() == roomID)
 			{
 				tmp.setRoomPeople(tmp.getRoomPeople()+1);
+				tmp.newPlayers(userName,false);
 			}
 		}
 	}
