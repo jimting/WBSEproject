@@ -10,8 +10,14 @@
 		            	document.getElementById("gameList").innerHTML = "";
 		            	for(i=0;i<response.length;i++)
 		            	{
-		            		document.getElementById("gameList").innerHTML += 
-		            			'<li class="list-group-item" onclick="EnterRoom('+response[i].roomNumber+')" >'+ response[i].roomName +' <span class="badge">'+ response[i].roomPeople +'</span></li>';
+		            		if(response[i].roomPeople < 5)
+		            		{
+		            			document.getElementById("gameList").innerHTML += '<li class="list-group-item" onclick="EnterRoom('+response[i].roomNumber+')" >'+ response[i].roomName +' <span class="badge">'+ response[i].roomPeople +'</span></li>';
+		            		}
+		            		else
+		            		{
+		            			document.getElementById("gameList").innerHTML += '<li class="list-group-item" >'+ response[i].roomName +' <span class="badge">人數已滿</span></li>';
+		            		}
 		            	}
 		            },
 		        	dataType: "json",

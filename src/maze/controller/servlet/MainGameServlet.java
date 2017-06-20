@@ -31,6 +31,14 @@ public class MainGameServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		Game game = null;
 		RequestDispatcher view;
 		ArrayList<Game> gameList = (ArrayList<Game>) getServletContext().getAttribute("gameList");
@@ -56,14 +64,6 @@ public class MainGameServlet extends HttpServlet {
 		view = request.getRequestDispatcher("main.jsp");
 		view.forward(request, response);
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
