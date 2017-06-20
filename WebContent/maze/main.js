@@ -7,6 +7,11 @@ main = function (playerNum,mx,mz)
 	var clock;
 	var isAlive = true;
 
+	//用來存放Counter
+	var Counter = document.getElementById('counter');
+	Counter.style.display= '';
+	
+	
 	//用來偵測牆壁碰撞
 	
 	//用來裝偵測用的牆壁
@@ -19,6 +24,21 @@ main = function (playerNum,mx,mz)
 	var walkAction = [];
 	var runAction = [];
 
+	
+	function counter()
+	{
+		var i = 65;
+        var counterTmp = setInterval(function()
+		{
+			if(i === 0) 
+			{
+                Counter.innerHTML = "遊戲結束！";
+				clearInterval(loadingID);
+				document.location.href="roomlist.html";
+			}
+            Counter.innerHTML = "時間剩下" + i + "秒";
+        },1000);
+	}
 	
 	function activateAllActions(i) {
 		setWeight( idleAction[i], 0 );
@@ -92,6 +112,7 @@ main = function (playerNum,mx,mz)
 	// Sets up the scene.
 	function init()
 	 {
+		counter();
 
 	 	clock = new THREE.Clock();
 		

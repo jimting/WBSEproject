@@ -31,17 +31,22 @@
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
-		
+		<script>
+		function go(){
+		var myAuto = document.getElementById('audio');  
+                    myAuto.play();}
+		</script>
 		
 		<link rel="stylesheet" href="stylesheet.css">
 	</head>
-	<body>
+	<body onload="go()">
+	<audio id="audio" src="Music/gaming.mp3" style="opacity:0" preload="auto" controls loop hidden="true"/>
 		<script type="text/javascript">
 		window.onload =function() 
 		{
 			var i = 4;
             var loadingID = setInterval(function()
-			{               
+			{
 				if(i === 0) 
 				{
                     document.getElementById("loading").innerHTML =
@@ -61,6 +66,8 @@
         
       
 		</script>
+		
+		<div id = "counter "></div>
 		<div id='loading'>
 			<div id="instructions">
 				<span id="count">5</span>秒後遊戲開始
