@@ -115,12 +115,14 @@
 }
 .chattingContext
 {
-	color:white;
+	border-radius:10px;
+	background-color:purple;
 	height:400px;
 }
 .inputArea
 {
 	height:100px;
+	font-size:24px;
 }
 .chatButton
 {

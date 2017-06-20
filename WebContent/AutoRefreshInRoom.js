@@ -31,25 +31,28 @@
 		            {
 		            	if(response == null)
 		            		return;
-		            	//alert(response);
-		            	var i = 0;
 		            	
-		            	//列出所有房間夥伴
+		            	//列出所有房間夥伴，與更新對話視窗
 		            	document.getElementById("userData").innerHTML = "";
-		            	while(response.Players[i].userName != "")
+		            	document.getElementById("chattingContext").innerHTML = "";
+		            	for(var i = 0;i < response.Players.length;i++)
 		            	{
-		            		document.getElementById("userData").innerHTML += "<div class='userName' id='roomText'>" + response.Players[i].userName;
-		            		if(response.Players[i].leader == 'true')
+		            		//確認是否是室長
+		            		if(response.Players[i].leader)
 		            		{
-		            			document.getElementById("userData").innerHTML += " - 室長</div>";
+		            			document.getElementById("userData").innerHTML += "<div class='userName' id='roomText'>" + response.Players[i].userName + " - 室長</div>";
 		            		}
 		            		else
 		            		{
-		            			document.getElementById("userData").innerHTML += "123</div>";
+		            			document.getElementById("userData").innerHTML += "<div class='userName' id='roomText'>" + response.Players[i].userName + "</div>";
 		            		}
-		            		i++;
 		            	}
 		            	
+		            	//呈現全部聊天內容
+		            	for(var i = 0;i < response.chat.length;i++)
+		            	{
+		            		document.getElementById("chattingContext").innerHTML += "<p>" + response.chat[i] + "</p>";
+		            	}
 		            },
 		        	dataType: "json",
 		        	cache: false

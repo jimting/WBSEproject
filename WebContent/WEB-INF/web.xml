@@ -93,6 +93,14 @@
     <url-pattern>/ConstructRoom</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ChattingRoomServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.ChattingRoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChattingRoomServlet</servlet-name>
+    <url-pattern>/ChattingRoom</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>MainGameServlet</servlet-name>
     <servlet-class>maze.controller.servlet.MainGameServlet</servlet-class>
   </servlet>

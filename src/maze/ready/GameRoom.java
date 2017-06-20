@@ -8,6 +8,7 @@ public class GameRoom {
 	private int roomPeople;
 	private String roomName;
 	private ArrayList<Player> Players;
+	private ArrayList<String> chat;
 	
 	public GameRoom(int roomNumber,int roomPeople,String roomName){
 		Players = new ArrayList<Player>(5);
@@ -60,5 +61,9 @@ public class GameRoom {
 			}
 		}
 	}
-	
+	public void newChat(String userName,String chat)
+	{
+		String result = userName + ":" + chat;
+		this.chat.add(result);
+	}
 }
