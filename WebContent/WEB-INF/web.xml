@@ -117,6 +117,14 @@
     <url-pattern>/MainGame</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>GameStatusServlet</servlet-name>
+    <servlet-class>maze.controller.servlet.GameStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GameStatusServlet</servlet-name>
+    <url-pattern>/GameStatus</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>StoreAndGetMoveServlet</servlet-name>
     <servlet-class>maze.controller.servlet.StoreAndGetMoveServlet</servlet-class>
   </servlet>

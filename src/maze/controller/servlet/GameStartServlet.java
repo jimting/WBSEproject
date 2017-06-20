@@ -8,21 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import maze.ready.GameRoom;
 
 /**
- * Servlet implementation class CheckLeaderServlet
+ * Servlet implementation class GameStartServlet
  */
-@WebServlet("/CheckLeaderServlet")
-public class CheckLeaderServlet extends HttpServlet {
+@WebServlet("/GameStartServlet")
+public class GameStartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CheckLeaderServlet() {
+    public GameStartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,23 +36,12 @@ public class CheckLeaderServlet extends HttpServlet {
 		
 		int roomID = Integer.parseInt(request.getParameter("roomID"));
 		
-		
-		HttpSession session = request.getSession();
-		String userName = (String)session.getAttribute("userName");
-		
 		ArrayList<GameRoom> tmpGameRoom = (ArrayList<GameRoom>)getServletContext().getAttribute("roomList");
 		for(GameRoom tmp:tmpGameRoom)
 		{
 			if(tmp.getRoomNumber() == roomID)
 			{
-				if((tmp.getLeader().equals(userName)) && (tmp.getRoomPeople() == 5))
-				{
-					response.getWriter().write('1');
-				}
-				else
-				{
-					response.getWriter().write('0');
-				}
+				tmp.setGameStatus(1);
 			}
 		}
 	}

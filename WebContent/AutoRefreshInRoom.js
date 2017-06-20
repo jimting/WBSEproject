@@ -55,11 +55,10 @@
 		            	element.scrollTop = element.scrollHeight;
 		            	
 		            	//check人數與室長
-		            	var checkLeader = CheckLeader();
-		            	if((checkLeader) && (response.Players.length == 5))
-		            	{
-		            		document.getElementById("startButtonArea").innerHTML = '<a href="main.jsp" class="myButton" style="float:left;">開始遊戲</a>'
-		            	}
+		            	CheckLeader();
+		            	
+		            	//確認遊戲狀態(是否開始遊戲)
+		            	GameStatus();
 		            },
 		        	dataType: "json",
 		        	cache: false

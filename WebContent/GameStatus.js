@@ -1,4 +1,4 @@
-﻿function CheckLeader() {
+function GameStatus() {
 				
 				var url = window.location.toString(); //取得當前網址
 			    var str = ""; //參數中等號左邊的值
@@ -20,17 +20,17 @@
 			    }
 			    
 		        $.ajax({
-		            url: "CheckLeader",
+		            url: "GameStatus",
 		            data:
 		            {
 		            	roomID	:	roomID
 		            },
 		            success: function (response) 
 		            {
-		            	if(response == '1')
-		            		document.getElementById("startButtonArea").innerHTML = '<button class="myButton" style="float:left;" onclick="GameStart()">開始遊戲</button>'	
-		            	else
-		            		document.getElementById("startButtonArea").innerHTML = '';
+		            	if(response == '1')	
+		            	{
+		            		document.location.href="MainGame";
+		            	}
 		            },
 		        	cache: false
 		        	});
