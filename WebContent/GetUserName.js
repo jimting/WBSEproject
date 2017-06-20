@@ -1,4 +1,4 @@
-function getUserName(){
+﻿function getUserName(){
 	$.ajax({
 		url: "GetUserName",
 		success: function (response) 

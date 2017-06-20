@@ -51,6 +51,8 @@
 		            		document.getElementById("chattingContext").innerHTML += "<p id='roomText' style='font-size:24px;'>" + response.chat[i] + "</p>";
 		            	}
 		            	document.getElementById("chattingContext").innerHTML += "<div id='bottom'></div>";
+		            	var element = document.getElementById("chattingContext");
+		            	element.scrollTop = element.scrollHeight;
 		            },
 		        	dataType: "json",
 		        	cache: false

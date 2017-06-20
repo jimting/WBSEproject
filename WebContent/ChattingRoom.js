@@ -1,4 +1,4 @@
-function ChattingRoom() {
+﻿function ChattingRoom() {
 				
 				var url = window.location.toString(); //取得當前網址
 			    var str = ""; //參數中等號左邊的值
@@ -28,7 +28,7 @@ function ChattingRoom() {
 		            },
 		            success: function (response) 
 		            {
-		            	
+		            	document.getElementById("inputArea").innerHTML = '<input class="userInput" id="userInput" name="userInput" placeholder="請輸入聊天訊息" /><button class="myButton chatButton" onclick="ChattingRoom()">送出</button>';
 		            },
 		        	cache: false
 		        	});

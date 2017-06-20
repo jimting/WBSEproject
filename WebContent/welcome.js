@@ -1,4 +1,4 @@
-var req;
+﻿var req;
 
 function getPlayerNum(){
 	$.ajax({ 

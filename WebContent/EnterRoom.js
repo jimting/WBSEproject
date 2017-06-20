@@ -1,4 +1,4 @@
-//we store out timerIdhere
+﻿//we store out timerIdhere
 			//we define our function and STORE it in a var
 			function EnterRoom(roomID) {
 		        $.ajax({
