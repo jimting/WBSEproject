@@ -1,4 +1,4 @@
-package maze.controller.servlet;
+ï»¿package maze.controller.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,13 +33,13 @@ public class SettingNameServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//³oÃä­n¶}©l³]©w¦W¦r¡A¦pªG¦¨¥\´N¶i¤J©Ğ¶¡¦Cªí¡A¨S¦¨¥\´N¸õ¦^¶i¤J­¶­±
+		//é€™é‚Šè¦é–‹å§‹è¨­å®šåå­—ï¼Œå¦‚æœæˆåŠŸå°±é€²å…¥æˆ¿é–“åˆ—è¡¨ï¼Œæ²’æˆåŠŸå°±è·³å›é€²å…¥é é¢
 		request.setCharacterEncoding("utf-8");
 		String userName= request.getParameter("userName");
-		System.out.println("Åwªï"+userName+"¶}©lºZª±°k¥Xµ´©R°}");
+		System.out.println("æ­¡è¿"+userName+"é–‹å§‹æš¢ç©é€ƒå‡ºçµ•å‘½é™£");
 		response.setCharacterEncoding("utf-8");
 		
-		//³oÃä­n§â¦W¦r¦s¨ìsession¤¤¡AÅı¦Û¤vªº¹q¸£Åªªº¨ì¦Û¤vªº¦W¦r
+		//é€™é‚Šè¦æŠŠåå­—å­˜åˆ°sessionä¸­ï¼Œè®“è‡ªå·±çš„é›»è…¦è®€çš„åˆ°è‡ªå·±çš„åå­—
 		HttpSession session = request.getSession();
 		session.setAttribute("userName", userName);
 		

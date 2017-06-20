@@ -103,13 +103,26 @@
 }
 .chattingContext
 {
-	opacity: 1.0; 
-    filter: alpha(opacity=100); 
+	color:white;
+	height:400px;
+}
+.inputArea
+{
+	height:100px;
 }
 .chatButton
 {
+	width:50%;
+	height:100px;
+	position:relative;
 	opacity: 1.0; 
-    filter: alpha(opacity=100); 
-	margin-bottom:5px;
+    filter: alpha(opacity=100);
 	float:right;
+}
+.userInput
+{
+	width:50%;
+	height:100px;
+	float:left;
+	position:relative;
 }

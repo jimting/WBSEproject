@@ -1,4 +1,4 @@
-package maze.controller.servlet;
+ï»¿package maze.controller.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class EnterRoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int roomID = Integer.parseInt(request.getParameter("roomID"));
-		System.out.println("¦³¤H¶i¤J©Ð¶¡"+roomID);
+		System.out.println("æœ‰äººé€²å…¥æˆ¿é–“"+roomID);
 		response.setCharacterEncoding("utf-8");
 		ArrayList<GameRoom> tmpGameRoom = (ArrayList<GameRoom>)getServletContext().getAttribute("roomList");
 		for(GameRoom tmp:tmpGameRoom)

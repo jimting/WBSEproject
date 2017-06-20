@@ -1,4 +1,4 @@
-package maze.controller.servlet;
+ï»¿package maze.controller.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,15 +31,13 @@ public class AutoRefreshInRoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int roomID = Integer.parseInt(request.getParameter("roomID"));
-		System.out.println(roomID);
 		response.setCharacterEncoding("utf-8");
 		ArrayList<GameRoom> tmpGameRoom = (ArrayList<GameRoom>)getServletContext().getAttribute("roomList");
 		for(GameRoom tmp:tmpGameRoom)
 		{
 			if(tmp.getRoomNumber() == roomID)
 			{
-				System.out.println("¦L¥X¥h¤F¡I" + tmp.getRoomPeople());
-				//ª½±µ¶Ç¤H¼Æ¥X¥h
+				//ç›´æŽ¥å‚³äººæ•¸å‡ºåŽ»
 			    response.getWriter().write("" + tmp.getRoomPeople());
 			}
 		}
