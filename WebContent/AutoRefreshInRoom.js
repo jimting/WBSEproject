@@ -29,9 +29,6 @@
 		            },
 		            success: function (response) 
 		            {
-		            	if(response == null)
-		            		return;
-		            	
 		            	//列出所有房間夥伴，與更新對話視窗
 		            	document.getElementById("userData").innerHTML = "";
 		            	document.getElementById("chattingContext").innerHTML = "";
@@ -51,8 +48,9 @@
 		            	//呈現全部聊天內容
 		            	for(var i = 0;i < response.chat.length;i++)
 		            	{
-		            		document.getElementById("chattingContext").innerHTML += "<p>" + response.chat[i] + "</p>";
+		            		document.getElementById("chattingContext").innerHTML += "<p id='roomText' style='font-size:24px;'>" + response.chat[i] + "</p>";
 		            	}
+		            	document.getElementById("chattingContext").innerHTML += "<div id='bottom'></div>";
 		            },
 		        	dataType: "json",
 		        	cache: false

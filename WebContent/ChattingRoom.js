@@ -28,11 +28,8 @@ function ChattingRoom() {
 		            },
 		            success: function (response) 
 		            {
-		            	ajaxFn();
+		            	
 		            },
-		        	dataType: "json",
 		        	cache: false
 		        	});
 			}
-			
-			setInterval(ajaxFn,3000)

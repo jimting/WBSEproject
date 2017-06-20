@@ -1,4 +1,4 @@
-package maze.controller.servlet;
+﻿package maze.controller.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,6 +41,7 @@ public class ChattingRoomServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String userName = (String)session.getAttribute("userName");
+		
 		System.out.println(userName + "在房間" + roomID + "說" + chat);
 		ArrayList<GameRoom> tmpGameRoom = (ArrayList<GameRoom>)getServletContext().getAttribute("roomList");
 		for(GameRoom tmp:tmpGameRoom)

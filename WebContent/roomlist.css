@@ -117,7 +117,10 @@
 {
 	border-radius:10px;
 	background-color:purple;
+	color:white;
 	height:400px;
+	overflow-y:auto;
+	word-break: break-all;
 }
 .inputArea
 {

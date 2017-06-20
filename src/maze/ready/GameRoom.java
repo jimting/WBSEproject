@@ -12,6 +12,7 @@ public class GameRoom {
 	
 	public GameRoom(int roomNumber,int roomPeople,String roomName){
 		Players = new ArrayList<Player>(5);
+		chat = new ArrayList<>();
 		setRoomPeople(roomPeople);
 		setRoomNumber(roomNumber);
 		setRoomName(roomName);
